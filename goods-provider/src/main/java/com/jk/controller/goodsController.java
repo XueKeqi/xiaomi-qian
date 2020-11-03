@@ -1,5 +1,6 @@
 package com.jk.controller;
 
+import com.jk.entity.Carouse;
 import com.jk.entity.Goods;
 import com.jk.service.GoodsService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,10 @@ public class goodsController {
         return goodsService.findAll();
     }
 
-
+    @RequestMapping("/findCarouse")
+    public List<Carouse> findCarouse(){
+        return goodsService.findCarouse();
+    }
 
 
 

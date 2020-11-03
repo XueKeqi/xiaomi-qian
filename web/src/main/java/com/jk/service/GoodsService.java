@@ -1,5 +1,6 @@
 package com.jk.service;
 
+import com.jk.entity.Carouse;
 import com.jk.entity.Goods;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +11,10 @@ import java.util.List;
 @FeignClient(value = "goods")
 public interface GoodsService {
 
-    @RequestMapping("findAll")
+    @RequestMapping("goods/findAll")
     public List<Goods> findAll();
 
+    @RequestMapping("goods/findCarouse")
+    public List<Carouse> findCarouse();
 
 }

@@ -21,7 +21,7 @@ import java.util.List;
 
 @Controller
 public class Freemarker {
-    @Resource
+    /*@Resource
     private GoodsService goodsService;
 
     @RequestMapping("findAll")
@@ -70,6 +70,6 @@ public class Freemarker {
         out.close();
     }
 
-
+*/
 
 }
