@@ -1,7 +1,6 @@
 server:
-  port: 8651
+  port: 8652
 
 spring:
   application:
-    name: goods
-
+    name: user

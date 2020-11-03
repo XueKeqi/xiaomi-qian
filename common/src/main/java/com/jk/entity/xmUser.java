@@ -5,8 +5,19 @@ import lombok.Data;
 @Data
 public class xmUser {
 
-    private Integer id;
+    private Integer userId;
 
-    private String name;
+    private String userName;
+
+    private Integer userSex;
+
+    private String userPassword;
+
+    private String userPhone;
+
+    private String userEnail;
+
+    private String userImgurl;
+
 
 }
