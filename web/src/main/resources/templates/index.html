@@ -7,6 +7,22 @@
     <title>小米商城 - 小米10 Pro、Redmi 10X、小米MIX Alpha，小米电视官方网站</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/style.css">
+    <script src="../jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;}#banner{margin:40px auto;width:1226px;height:460px;background-color:#ff6700;position:relative;}.item{display:none;list-style:none;}
+        .item img{width:1226px;height:460px;position:absolute;top:0;left:0;}
+        .lr-tab .btn{position:absolute;width:41px;height:69px;top:195px}
+        .lr-tab .left{left:234px;background-position-x:-83px;}
+        .lr-tab .left:hover{background-position-x:0;cursor:pointer;}
+        .lr-tab .right{right:0;background-position:-125px 0;}
+        .lr-tab .right:hover{background-position-x:-41px;cursor:pointer;}
+        .tab-btn{position:absolute;width:120px;height:30px;right:15px;bottom:15px;}
+        .bottom-btn{list-style:none;width:6px;height:6px;background:rgba(0,0,0,0.5);border:2px solid rgba(255,255,255,0.5);float:left;margin:5px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;transition:all .3s;}
+        .bottom-btn:hover{background:rgba(255,255,255,0.5);border:2px solid rgba(0,0,0,0.5);transition:all .3s;cursor:pointer;}
+        .active{background:rgba(255,255,255,0.5);border:2px solid rgba(0,0,0,0.5);transition:all .3s;}
+
+    </style>
+
 </head>
 
 <body>
@@ -79,6 +95,32 @@
             </div>
         </div>
         <div class="content-list">
+            <div class="bg-picture">
+                <div id="banner" style="">
+                    <div class="img-wrap">
+                        <ul>
+                            <li class="item" style="display: block;"><img src="./images/good1.jpg"/></li>
+                            <li class="item"><img src="./images/good2.jpg"/></li>
+                            <li class="item"><img src="./images/good3.jpg"/></li>
+                            <li class="item"><img src="./images/good4.jpg"/></li>
+                            <li class="item"><img src="./images/good5.jpg"/></li>
+                        </ul>
+                    </div>
+                    <div class="lr-tab">
+                        <div class="left btn"></div>
+                        <div class="right btn"></div>
+                    </div>
+                    <div class="tab-btn">
+                        <ul>
+                            <li class="bottom-btn active"></li>
+                            <li class="bottom-btn"></li>
+                            <li class="bottom-btn"></li>
+                            <li class="bottom-btn"></li>
+                            <li class="bottom-btn"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="list">
                 <ul>
                     <li><a href="#">手机&nbsp;电话卡<img src="./images/箭头.png"></img></a></li>
@@ -95,9 +137,7 @@
             </div>
             <div class="arror-left"><img src="./images/icon-slides.png" alt=""></div>
             <div class="arror-right"><img src="./images/icon-slides.png" alt=""></div>
-            <div class="bg-picture">
-                <a href="index.html"><img src="./picture/cba15ec5507c76e4ab1c36b71243e06f.jpg" alt=""></a>
-            </div>
+
         </div>
         <div class="list-new clearfix">
             <div class="farst-content">
@@ -1083,5 +1123,47 @@
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    window.onload = function(){
+        $(function () {
+            var index = 0;
+            //------点击底部小圆点
+            $(".bottom-btn").click(function () {
+                index = $(this).index();                                //获取当前是第几个小圆点
+                $(this).addClass("active").siblings().removeClass("active");   //给小圆点添加鼠标经过的class
+                $(".item").eq(index).fadeIn().siblings().fadeOut();     //fadeIn是淡入    图片淡入淡出效果
+            });
+            //------右箭头
+            $(".lr-tab .right").click(function () {
+                index++;
+                if (index > 4)index = 0;            //当到最后一张图，再跳转到第一张
+                $(".item").eq(index).fadeIn().siblings().fadeOut();
+                $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
+            });
+            //------左箭头
+            $(".lr-tab .left").click(function () {
+                index--;
+                if (index < 0)index = 4;
+                $(".item").eq(index).fadeIn().siblings().fadeOut();
+                $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
+            });
+            //-------鼠标离开图片，再进行自动轮播
+            function autoplay () {
+                time = setInterval(function () {
+                    index++;
+                    if (index > 4)index = 0;
+                    $(".item").eq(index).fadeIn().siblings().fadeOut();
+                    $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
+                },1000);
+            }
+            autoplay();                 //这里调用自动轮播函数，也就是默认的效果
+            $("#banner").hover(function () {
+                clearInterval(time);    //鼠标经过banner区域，清除计时器
+            },autoplay);                //这里是鼠标退出banner区域，再进行轮播
+        });
+    };
 
+    //todo setInterval(,) 函数，第一个是定时器触发的函数，第二个是时间
+
+</script>
 </html>
