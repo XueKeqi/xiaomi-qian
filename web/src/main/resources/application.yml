@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+
+  freemarker:
+    check-template-location: true
+    template-loader-path: classpath:/templates/
+    cache: false
+    charset: utf-8
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    suffix: .ftl
+
+
+  application:
+    name: web
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: false
+
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+
+
+
+
+feign:
+  hystrix:
+    enabled: false
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+

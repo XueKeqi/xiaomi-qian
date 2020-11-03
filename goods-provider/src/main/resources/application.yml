@@ -1,0 +1,7 @@
+server:
+  port: 8661
+
+spring:
+  application:
+    name: goods
+
