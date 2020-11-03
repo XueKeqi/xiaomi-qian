@@ -10,7 +10,7 @@ import java.util.List;
 @FeignClient(value = "goods")
 public interface GoodsService {
 
-    @RequestMapping("findAll")
+    @RequestMapping("goods/findAll")
     public List<Goods> findAll();
 
 
