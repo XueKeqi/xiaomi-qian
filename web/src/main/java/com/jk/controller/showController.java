@@ -1,5 +1,6 @@
 package com.jk.controller;
 
+import com.jk.entity.Carouse;
 import com.jk.entity.Goods;
 import com.jk.entity.xmUser;
 import com.jk.service.GoodsService;
@@ -25,16 +26,25 @@ public class showController {
 
 
     @RequestMapping("goods/findAll")
-    public Map<String, Object> findAll(){
+    public Map<String, Object> findAll(String mid){
 
-        List<Goods> list = goodsService.findAll();
+        List<Goods> list = goodsService.findAll(mid);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("replies", list);
         return map;
     }
+
     @RequestMapping("user/toLogin")
     public void toLogin(@RequestBody xmUser user){
         userService.toLogin(user);
     }
+
+
+    @RequestMapping("findCarouse")
+    public List<Carouse> findCarouse(){
+        return goodsService.findCarouse();
+    }
+
+
 
 }

@@ -3,7 +3,11 @@
 <mapper namespace="com.jk.dao.GoodsMapper">
 
     <select id="findAll" resultType="com.jk.entity.Goods">
-        select * from goods_spu where category_id = 1
+        select * from goods_spu where category_id in
+        <foreach collection="array" open="(" close=")" separator="," item="mid">
+            #{mid}
+        </foreach>
+    limit 8
     </select>
 
 </mapper>

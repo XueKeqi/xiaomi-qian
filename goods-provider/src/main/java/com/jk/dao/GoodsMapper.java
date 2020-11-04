@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface GoodsMapper {
-    List<Goods> findAll();
+    List<Goods> findAll(String[] mid);
 }
