@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/user")
@@ -16,8 +17,8 @@ public class userController {
     private userService userService;
 
     @RequestMapping("/toLogin")
-    public String toLogin(@RequestBody xmUser user){
-        return userService.toLogin(user);
+    public String toLogin(@RequestBody xmUser user, HttpSession session){
+        return userService.toLogin(user,session);
     }
 
 }

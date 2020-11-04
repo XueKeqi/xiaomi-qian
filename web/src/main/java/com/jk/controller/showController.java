@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +36,8 @@ public class showController {
     }
 
     @RequestMapping("user/toLogin")
-    public void toLogin(@RequestBody xmUser user){
-        userService.toLogin(user);
+    public String toLogin(xmUser user){
+         return userService.toLogin(user);
     }
 
 

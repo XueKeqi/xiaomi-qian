@@ -640,12 +640,12 @@ Sentry.init({
 <script type="text/javascript">
  function login(){
   alert("aaa")
-  $("#loginForm").form("submit",{
-    url:"./user/toLogin",
-    success:function(data){
-    alert(data);
-    if(data=="登录成功"){
-     location.href="/index.html";
+    $("#loginForm").form("submit",{
+       url:"./user/toLogin",
+       success:function(data){
+       alert(data);
+     if(data=="登录成功"){
+     location.href="../index";
       }
     }
   });
