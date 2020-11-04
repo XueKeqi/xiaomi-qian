@@ -106,9 +106,23 @@
                     </div>
                 </a>
             </div>
+
+
+            <div id="ggg" style="float: left;margin-left: 15px">
+                <a href="index.html">
+                    <div>
+                        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f58837161090e2e04bf687088b2ffe77.gif?w=165&h=55" alt="MI">
+                    </div>
+
+                </a>
+
+            </div>
+
+
+
             <div class="guid">
                 <ul>
-                    <li onmouseover="mOver(this)" onmouseout="mOut(this)"><a href="#">小米手机</a></li>
+                    <li><a href="#">小米手机</a></li>
                     <li class="asda"><a href="#">Redmi红米</a></li>
                     <li class="asda"><a href="#">电视</a></li>
                     <li class="asda"><a href="#">笔记本</a></li>
@@ -183,8 +197,8 @@
                     <li><a href="#">生活&nbsp;箱包<img src="./images/箭头.png"></img></a></li>
                 </ul>
             </div>
-            <div class="arror-left"><img src="./images/icon-slides.png" alt=""></div>
-            <div class="arror-right"><img src="./images/icon-slides.png" alt=""></div>
+            <div id="qwe" class="arror-left left"><img src="./images/icon-slides.png" alt=""></div>
+            <div id="zxc" class="arror-right right"><img src="./images/icon-slides.png" alt=""></div>
 
         </div>
 
@@ -324,6 +338,9 @@
                         <img src="./picture/小米MIX.webp" alt="">
                     </a>
                 </div>
+
+
+
                 <div class="shop-content-right">
                     <ul id="ul_list">
                         <!--<li><a href="#">
@@ -354,6 +371,9 @@
                     </ul>
                 </div>
             </div>
+
+
+
             <div class="main-shop-list-left">
                 <ul class="clearfix">
                     <li><a href="#"><img src="./picture/f256b81e4233333692eece77ed06ebc2.webp" /></a></li>
@@ -362,44 +382,9 @@
                     </li>
                 </ul>
             </div>
+
             <div class="main-shop-list-right">
-                <ul class="clearfix">
-
-                    <li>
-                        <a href="#">
-                            <div class="shop-img">
-                                <img src="./picture/ef4c68fed730ec26bf2fa0ff620975c5.webp" alt="">
-                            </div>
-                            <h3 class="ellipse">Redmi 红米电视 70英寸</h3>
-                            <p class="ellipse">70英寸震撼巨屏，4K画质，细腻如真</p>
-                            <p><span>2999元</span><del>3799元</del></p>
-                        </a>
-                    </li>
-
-
-                    <li class="last">
-                        <a href="#">
-                            <div class="shop-list-box-top">
-                                <img src="./picture/74e573c4c0d89048392d14831cc507d5.webp" alt="">
-                                <h3>Air 13.3" 2019款</h3>
-                                <span>5699元起</span>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="shop-list-box-bottom">
-                                <div class="right"></div>
-                                <div class="desc">
-                                    <h1>浏览更多</h1>
-                                    <p>热门</p>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-
-
-
-
-
+                <ul id="ula_list">
 
                 </ul>
             </div>
@@ -612,7 +597,7 @@
         $(function () {
 
             findList();
-
+            findLista();
 
             var index = 0;
             //------点击底部小圆点
@@ -622,14 +607,14 @@
                 $(".item").eq(index).fadeIn().siblings().fadeOut();     //fadeIn是淡入    图片淡入淡出效果
             });
             //------右箭头
-            $(".lr-tab .right").click(function () {
+            $("#zxc").click(function () {
                 index++;
                 if (index > 4)index = 0;            //当到最后一张图，再跳转到第一张
                 $(".item").eq(index).fadeIn().siblings().fadeOut();
                 $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
             });
             //------左箭头
-            $(".lr-tab .left").click(function () {
+            $("#qwe").click(function () {
                 index--;
                 if (index < 0)index = 4;
                 $(".item").eq(index).fadeIn().siblings().fadeOut();
@@ -642,7 +627,7 @@
                     if (index > 4)index = 0;
                     $(".item").eq(index).fadeIn().siblings().fadeOut();
                     $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
-                },5000);
+                },4000);
             }
             autoplay();                 //这里调用自动轮播函数，也就是默认的效果
             $("#banner").hover(function () {
@@ -661,7 +646,7 @@
 
 
     function findList(){
-        var mid=1;
+        var mid="1";
         $.ajax({
             dataType:"json",
             type:"POST",
@@ -674,24 +659,32 @@
 
                 for(var i=0;i<data.replies.length;i++){
                     var id=arr[i].id;
+                    var cid = arr[i].categoryId;
                     var title=arr[i].title;
                     var detail=arr[i].detail;
                     var price=arr[i].price;
+                    if(cid == 1){
+                        str+="<li><a href=\'#\'>";
+                        str+="<div class=\'shop-content-li\'>";
+                        str+="<img src=\'./picture/小米10 至尊版.webp\' alt=\'\'>";
+                        str+="<h3 class=\'ellipse\'>"+title+"</h3>";
+                        str+="<p class=\'ellipse\'>"+detail+"</p>";
+                        str+="<p class=\'price\'><span>"+price+"</span></p>";
+                        str+="</div>";
+                        str+="</a>";
+                        str+="</li>";
+                       $("#ul_list").html(str);
 
-                   str+="<li><a href=\'#\'>";
-                   str+="<div class=\'shop-content-li\'>";
-                   str+="<img src=\'./picture/小米10 至尊版.webp\' alt=\'\'>";
-                   str+="<h3 class=\'ellipse\'>"+title+"</h3>";
-                   str+="<p class=\'ellipse\'>"+detail+"</p>";
-                   str+="<p class=\'price\'><span>"+price+"</span></p>";
-                   str+="</div>";
-                   str+="</a>";
-                   str+="</li>";
-                   /*$("#ul_list").append(str);*/
-                    $("#ul_list").html(str);
+                    }
+
 
                    // $('#reply_'+mid).prepend("<dl style='background-color:pink;'><dt>"+content+"</dt><dd>回复者："+name+"</dd><dd>回复时间："+time+"</dd></dl>");
                 }
+
+
+
+
+
                // alert(str);
             },error:function(data){
                 alert(系统错误);
@@ -700,23 +693,72 @@
     }
 
 
+    function findLista(){
+        var mid="3,21";
+        $.ajax({
+            dataType:"json",
+            type:"POST",
+            url:"../goods/findAll",
+            data:{mid:mid},
+            success:function(data){
+                var arr=data.replies;
+
+                var str = "";
+                var a = 0;
+
+                for(var i=0;i<data.replies.length ;i++){
+                    a++;
+                    var id=arr[i].id;
+                    var cid = arr[i].categoryId;
+                    var title=arr[i].title;
+                    var detail=arr[i].detail;
+                    var price=arr[i].price;
+                    if(a<=7){
+
+                        str+='<li>';
+                        str+='<a href="#">';
+                        str+='<div class="shop-img">';
+                        str+='<img src="./picture/ef4c68fed730ec26bf2fa0ff620975c5.webp" alt="">';
+                        str+='</div>';
+                        str+='<h3 class="ellipse">'+title+'</h3>';
+                        str+='<p class="ellipse">'+detail+'</p>';
+                        str+='<p><span>2999元</span><del>'+price+'</del></p>';
+                        str+='</a>';
+                        str+='</li>';
+                    }else{
+                        str+='<li class="last">';
+                        str+='<a href="#">';
+                        str+='<div class="shop-list-box-top">';
+                        str+='<img src="./picture/74e573c4c0d89048392d14831cc507d5.webp" alt="">';
+                        str+='<h3>'+title+'</h3>';
+                        str+='<span>'+price+'元起</span>';
+                        str+='</div>';
+                        str+='</a>';
+                        str+='<a href="#">';
+                        str+='<div class="shop-list-box-bottom">';
+                        str+='<div class="right"></div>';
+                        str+='<div class="desc">';
+                        str+='<h1>浏览更多</h1>';
+                        str+='<p>热门</p>';
+                        str+='</div>';
+                        str+='</div>';
+                        str+='</a>';
+                        str+='</li>';
+                    }
+                    //$("#ula_list").append(str)
+                  // $("ul").append("<li>" + value +"</li>");
+                    //$("ul").append($("ol li"));
+                    $("#ula_list").html(str);
+                    }
 
 
+                    // $('#reply_'+mid).prepend("<dl style='background-color:pink;'><dt>"+content+"</dt><dd>回复者："+name+"</dd><dd>回复时间："+time+"</dd></dl>");
+                }
+                // alert(str);
 
-    function mOver(obj){
-       var a = document.getElementById("zx_lll");
-       //a.setAttribute("z-index","1");
-        alert("上")
-       a.style.zIndex = 1;
-
+        });
     }
 
-
-    function mOut(obj){
-        alert("下")
-        a.style.zIndex = 0;
-       //alert(2)
-    }
 
 
 
