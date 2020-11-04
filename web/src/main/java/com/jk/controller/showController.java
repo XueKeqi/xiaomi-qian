@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/web")
 public class showController {
 
     @Resource
@@ -20,9 +21,13 @@ public class showController {
 
 
 
-    @RequestMapping("findAll")
-    public List<Goods> findAll(){
-        return goodsService.findAll();
+    @RequestMapping("goods/findAll")
+    public Map<String, Object> findAll(){
+
+        List<Goods> list = goodsService.findAll();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("replies", list);
+        return map;
     }
 
     @RequestMapping("findCarouse")
