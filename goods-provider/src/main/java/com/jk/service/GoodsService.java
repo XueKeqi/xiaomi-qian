@@ -6,7 +6,7 @@ import com.jk.entity.Goods;
 import java.util.List;
 
 public interface GoodsService {
-    List<Goods> findAll();
+    List<Goods> findAll(String mid);
 
     List<Carouse> findCarouse();
 }

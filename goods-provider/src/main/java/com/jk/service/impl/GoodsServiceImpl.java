@@ -19,8 +19,9 @@ public class GoodsServiceImpl implements GoodsService {
     private CarouseMapper carouseMapper;
 
     @Override
-    public List<Goods> findAll() {
-        return goodsMapper.findAll();
+    public List<Goods> findAll(String mid) {
+        String[] mids=mid.split(",");
+        return goodsMapper.findAll(mids);
     }
 
     @Override

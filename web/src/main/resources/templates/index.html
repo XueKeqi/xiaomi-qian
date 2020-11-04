@@ -1163,12 +1163,12 @@
 
 
     function findList(){
-
+        var mid=1;
         $.ajax({
             dataType:"json",
             type:"POST",
             url:"../goods/findAll",
-           // data:{mid:mid},
+            data:{mid:mid},
             success:function(data){
                 var arr=data.replies;
 
