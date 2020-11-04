@@ -661,35 +661,35 @@
 
 
     function findList(){
-
+        var mid=1;
         $.ajax({
             dataType:"json",
             type:"POST",
             url:"../goods/findAll",
-           // data:{mid:mid},
+            data:{mid:mid},
             success:function(data){
                 var arr=data.replies;
 
                 var str = "";
 
                 for(var i=0;i<data.replies.length;i++){
-/*
                     var id=arr[i].id;
                     var title=arr[i].title;
                     var detail=arr[i].detail;
                     var price=arr[i].price;
-*/
 
                    str+="<li><a href=\'#\'>";
                    str+="<div class=\'shop-content-li\'>";
                    str+="<img src=\'./picture/小米10 至尊版.webp\' alt=\'\'>";
-                   str+="<h3 class=\'ellipse\'>小米10 至尊版</h3>";
-                   str+="<p class=\'ellipse\'>120X 变焦/120W秒充/120Hz屏幕</p>";
-                   str+="<p class=\'price\'><span>5299元起</span></p>";
+                   str+="<h3 class=\'ellipse\'>"+title+"</h3>";
+                   str+="<p class=\'ellipse\'>"+detail+"</p>";
+                   str+="<p class=\'price\'><span>"+price+"</span></p>";
                    str+="</div>";
                    str+="</a>";
                    str+="</li>";
-                   $("ul_list").append(str)
+                   /*$("#ul_list").append(str);*/
+                    $("#ul_list").html(str);
+
                    // $('#reply_'+mid).prepend("<dl style='background-color:pink;'><dt>"+content+"</dt><dd>回复者："+name+"</dd><dd>回复时间："+time+"</dd></dl>");
                 }
                // alert(str);
