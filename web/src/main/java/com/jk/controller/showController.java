@@ -2,6 +2,7 @@ package com.jk.controller;
 
 import com.jk.entity.Carouse;
 import com.jk.entity.Goods;
+import com.jk.entity.Picture;
 import com.jk.service.GoodsService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,6 +34,14 @@ public class showController {
     @RequestMapping("findCarouse")
     public List<Carouse> findCarouse(){
         return goodsService.findCarouse();
+    }
+
+    @RequestMapping("goods/findLun")
+    public Map<String, Object> findLun(String mid){
+        List<Picture> list = goodsService.findLun(mid);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("replies", list);
+        return map;
     }
 
 

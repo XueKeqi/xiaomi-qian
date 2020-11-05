@@ -1,6 +1,7 @@
 package com.jk.dao;
 
 import com.jk.entity.Carouse;
+import com.jk.entity.Picture;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface CarouseMapper {
     int updateByPrimaryKey(Carouse record);
 
     List<Carouse> findCarouse();
+
+    List<Picture> findLun(String mid);
 }

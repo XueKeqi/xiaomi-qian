@@ -676,16 +676,7 @@
                        $("#ul_list").html(str);
 
                     }
-
-
-                   // $('#reply_'+mid).prepend("<dl style='background-color:pink;'><dt>"+content+"</dt><dd>回复者："+name+"</dd><dd>回复时间："+time+"</dd></dl>");
                 }
-
-
-
-
-
-               // alert(str);
             },error:function(data){
                 alert(系统错误);
             }
@@ -758,6 +749,33 @@
 
         });
     }
+
+
+
+    /*轮播图*/
+
+    function findLun(){
+        var mid="1";
+        $.ajax({
+            dataType:"json",
+            type:"POST",
+            url:"../goods/findLun",
+            data:{mid:mid},
+            success:function(data){
+                var arr=data.replies;
+
+                var str = "";
+
+                for(var i=0;i<data.replies.length;i++){
+
+
+                }
+            },error:function(data){
+                alert(系统错误);
+            }
+        });
+    }
+
 
 
 
