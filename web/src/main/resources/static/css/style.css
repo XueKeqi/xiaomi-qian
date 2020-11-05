@@ -139,6 +139,10 @@ div{
     color: #B0B0B0;
     line-height: 40px;
 }
+
+
+
+
 .nav a:hover {
     color: #fff;
 }
@@ -1329,3 +1333,7 @@ ul ,ol{list-style-type:none;}
     margin:55px auto;
     font-size:16px;
 }
+
+
+
+

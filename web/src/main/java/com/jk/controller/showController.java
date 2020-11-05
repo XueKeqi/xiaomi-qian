@@ -46,8 +46,16 @@ public class showController {
 
 
     @RequestMapping("user/toLogin")
-    public String toLogin(xmUser user){
-         return userService.toLogin(user);
+    public String toLogin(xmUser user,HttpSession session){
+        xmUser user2 =userService.toLogin(user);
+        if(user2==null){
+            return"请输入账号和密码";
+        }
+        if(!user2.getUserPassword().equals(user.getUserPassword())){
+            return "密码不正确";
+        }
+
+        return "登录成功";
     }
 
 

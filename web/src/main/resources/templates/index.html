@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -90,7 +90,7 @@
             </div>
             <div class="nav-right">
                 <ul>
-                    <li><a href="./login">${user.userName}登录</a><span>|</span></li>
+                    <li><a href="./login">登录</a><span>|</span></li>
                     <li><a href="#">注册</a><span>|</span></li>
                     <li><a href="#">消息通知</a></li>
                 </ul>
@@ -625,6 +625,13 @@
             userList: "",
         }
     })
+
+
+
+
+
+
+
 
 
 

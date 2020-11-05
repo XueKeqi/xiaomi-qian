@@ -5,5 +5,5 @@ import com.jk.entity.xmUser;
 import javax.servlet.http.HttpSession;
 
 public interface userService {
-    String toLogin(xmUser user, HttpSession session);
+    xmUser findUserbyName(String userName);
 }

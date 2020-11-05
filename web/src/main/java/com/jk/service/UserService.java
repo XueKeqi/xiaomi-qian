@@ -10,5 +10,5 @@ import javax.servlet.http.HttpSession;
 @FeignClient(value = "user")
 public interface UserService {
     @RequestMapping("user/toLogin")
-    public String toLogin(@RequestBody xmUser user);
+    public xmUser toLogin(@RequestBody xmUser user);
 }

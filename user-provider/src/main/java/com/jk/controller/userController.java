@@ -17,8 +17,8 @@ public class userController {
     private userService userService;
 
     @RequestMapping("/toLogin")
-    public String toLogin(@RequestBody xmUser user, HttpSession session){
-        return userService.toLogin(user,session);
+    public xmUser toLogin(@RequestBody xmUser user){
+       return userService.findUserbyName(user.getUserName());
     }
 
 }

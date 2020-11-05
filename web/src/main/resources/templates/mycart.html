@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon"
+        href="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1720967367,570303970&fm=26&gp=0.jpg" />
+    <link rel="stylesheet" href="../css/mycart.css">
+    <title>我的购物车</title>
+</head>
+
+<body>
+
+    <div id="header-wrap">
+        <div id="header">
+            <div id="logo">
+                <div>
+                    <a href="index.html"><img src="https://s02.mifile.cn/assets/static/image/mi-home.png"
+                            class="logo"></a>
+                    <a href="index.html"><img src="https://s02.mifile.cn/assets/static/image/mi-logo.png"
+                            class="logo"></a>
+                </div>
+            </div>
+            <p>我的购物车</p>
+            <p>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</p>
+            <p>欢迎您：<span id="account"></span></p>
+            <div id="quit">
+                <a>注销</a>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="main-header">
+            <input type="checkbox" id="selAll" checked="checked">
+            <p>全选</p>
+            <p>商品名称</p>
+            <p>单价</p>
+            <p>数量</p>
+            <p>小计</p>
+            <p>操作</p>
+        </div>
+        <div class="main-products"></div>
+    </div>
+    <div id="All-price-bar">
+        <a href="index.html">继续购物</a>
+        <span>竞争不是你死我活,而是重视用户的体验,用户是根本,我们要用心做产品,把心思放在产品和用户上!</span>
+        <span>当前商品一共&ensp;<i id="All-price"></i>&ensp;元</span>
+        <div>去结算</div>
+    </div>
+    <div id="footer">
+        <ul id="footer-top">
+            <li><i class="iconfont icon-banshou"></i><span>预约维修服务</span></li><span>|</span>
+            <li><i class="iconfont icon-qitianwuliyoutuihuan"></i><span>七天无理由退货</span></li><span>|</span>
+            <li><i class="iconfont icon-15"></i><span>十五天免费换货</span></li><span>|</span>
+            <li><i class="iconfont icon-lipin"></i><span>满99全国包邮</span></li><span>|</span>
+            <li><i class="iconfont icon-weizhi"></i><span>全国500家网店</span></li>
+        </ul>
+        <div id="footer-mid">
+            <ul id="help">
+                <li>
+                    <b>帮助中心</b>
+                    <p>账单管理</p>
+                    <p>购物指南</p>
+                    <p>订单操作</p>
+                </li>
+                <li>
+                    <b>服务支持</b>
+                    <p>售后政策</p>
+                    <p>购物指南</p>
+                    <p>相关下载</p>
+                </li>
+                <li>
+                    <b>线下门店</b>
+                    <p>小米之家</p>
+                    <p>服务网点</p>
+                    <p>授权体验店</p>
+                </li>
+                <li>
+                    <b>关于小米</b>
+                    <p>了解小米</p>
+                    <p>加入小米</p>
+                    <p>投资者关系</p>
+                    <p>企业社会责任</p>
+                    <p>廉洁举报</p>
+                </li>
+                <li>
+                    <b>关于我们</b>
+                    <p>新浪微博</p>
+                    <p>官方微信</p>
+                    <p>联系我们</p>
+                    <p>公益基金会</p>
+                </li>
+                <li>
+                    <b>特色服务</b>
+                    <p>F码通道</p>
+                    <p>礼物码</p>
+                    <p>防伪查询</p>
+                </li>
+            </ul>
+
+            <div id="kefu">
+                <p>400-100-5678</p>
+                <i>9:00-18:00(仅收市话费)</i>
+                <b><span class="iconfont icon-daojishi"></span>人工客服</b>
+            </div>
+        </div>
+    </div>
+    <div id="footer-bottom-wrap">
+        <div id="footer-bottom">
+            <div><img src="http://s02.mifile.cn/assets/static/image/logo-footer.png" alt=""></div>
+            <ul>
+                <li>小米商城</li>
+                <li>MIUI</li>
+                <li>小米之家</li>
+                <li>小米米聊</li>
+                <li>小米多看</li>
+                <li>小米游戏</li>
+                <li>政企服务</li>
+                <li>天猫商城</li>
+                <li>隐私政策</li>
+                <li>儿童保护</li>
+                <li>招商引资</li>
+                <li>用户协议</li>
+                <li>问题反馈</li>
+                <li>Location</li>
+            </ul>
+            <div id="a">
+                <a href="http://mi.com">mi.com&nbsp;京ICP证110507号</a>
+                <a href="">京ICP备10046444号</a>
+                <a href="">京公网安备11010802020134号</a>
+                <a href="">京网文[2020]0276-042号</a><br>
+                <a href="">（京）网械平台备字（2018）第00005号</a>
+                <a href="">互联网药品信息服务资格证 (京)-非经营性-2014-0090</a>
+                <a href="">营业执照</a>
+                <a href="">医疗器械质量公告</a><br>
+                <a href="">增值电信业务许可证</a>
+                <a href="">网络食品经营备案</a>
+                <a href="">京食药网食备202010048</a>
+                <a href="">食品经营许可证</a><br>
+                <a href="">违法和不良信息举报电话：171-5104-4404</a>
+                <a href=""> 知识产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</a>
+            </div>
+            <div id="imgbox">
+                <img src="https://i1.mifile.cn/f/i/17/site/truste.png" alt="">
+                <img src="https://s01.mifile.cn/i/v-logo-2.png" alt="">
+                <img src="https://s01.mifile.cn/i/v-logo-1.png" alt="">
+                <img src="https://i8.mifile.cn/b2c-mimall-media/ba10428a4f9495ac310fd0b5e0cf8370.png" alt="">
+                <img src="https://cnbj1.fds.api.xiaomi.com/b2c-misite-activity/c02b9bde772b0ed3098b85ce7267ef55.png"
+                    alt="">
+            </div>
+        </div>
+        <p id="enjoy">让全球每个人都能享受到科技带来的美好生活</p>
+    </div>
+    <script src="../JS/jquery-3.2.1.min.js"></script>
+    <script>
+        /* --------------------------------加载购物车商品---------------------------------- */
+        function loadCart() {
+            $.ajax({
+                type: 'get',
+                url: 'http://jx.xuzhixiang.top/ap/api/cart-list.php',
+                data: {
+                    id: localStorage.getItem('userid')
+                },
+                success: (res) => {
+                    let html = '';
+
+                    res.data.reverse().forEach(v => {
+                        html +=
+                            `<div class="main-products">
+                                <input type="checkbox" class="selSingle" checked="checked">
+                                <img src="${v.pimg}">
+                                <p class="pro-name">${v.pname}</p>
+                                <p class="pro-price">${v.pprice}<span>元</span></p>
+                                <div class="pro-num-box">
+                                    <input type="button" class="subBtn" value="减" data-id="${v.pid}" data-price="${v.pprice}">
+                                    <p class="pro-num">${v.pnum}</p>
+                                    <input type="button" class="addBtn" value="加" data-id="${v.pid}" data-price="${v.pprice}">
+                                </div>
+                                <p class="pro-num-count">${v.pnum * v.pprice}<span>元</span></p>
+                                <p class="pro-op" data-id="${v.pid}">删除</p>
+                            </div>
+                            `
+                    })
+                    $('.main-products').html(html);
+                    $('#account').html(localStorage.getItem('username'));
+                    delCart();
+                    subCart();
+                    addCart();
+                    selAll();
+                    selSingle();
+                    loadAllNum();
+                },
+                error: (err) => {
+                    console.log('服务器繁忙');
+                }
+            })
+        }
+        loadCart();
+        function delCart() {
+            $('.pro-op').click(function () {
+                let res = confirm('您确定要删除吗?');
+                if (res) {
+                    $.ajax({
+                        type: 'get',
+                        url: 'http://jx.xuzhixiang.top/ap/api/cart-delete.php',
+                        data: {
+                            uid: localStorage.getItem('userid'),
+                            pid: $(this).attr('data-id')
+                        },
+                        success: (res) => {
+                            $(this).parent().remove();
+                            if ($('.selSingle').length == $('.selSingle:checked').length) {
+                                $('#selAll').prop('checked', true);
+                            } else {
+                                $('#selAll').prop('checked', false);
+                            }
+                            loadAllNum();
+                        }
+                    })
+                }
+            })
+        }
+        /* ---------------------------------------购物车中减少商品---------------------------*/
+        function subCart() {
+            $('.subBtn').click(function () {
+                let nowNum = parseInt($(this).next().html());
+                if (nowNum == 1) {
+                    return;
+                }
+                $.ajax({
+                    type: 'get',
+                    url: 'http://jx.xuzhixiang.top/ap/api/cart-update-num.php?',
+                    data: {
+                        uid: localStorage.getItem('userid'),
+                        pid: $(this).attr('data-id'),
+                        pnum: nowNum - 1
+                    },
+                    success: (res) => {
+                        $(this).next().html($(this).next().html() - 1);
+                        $(this).parent().parent().children().eq(5).html($(this).attr('data-price') * $(this).next().html() + '元');
+                        loadAllNum();
+                    },
+                    error: (err) => {
+                        console.log('服务器繁忙');
+                    }
+                })
+            })
+        }
+        /* ------------------------------购物车中添加商品-------------------------------- */
+        function addCart() {
+            $('.addBtn').click(function () {
+                let nowNum = parseInt($(this).prev().html());
+                $.ajax({
+                    type: 'get',
+                    url: 'http://jx.xuzhixiang.top/ap/api/cart-update-num.php',
+                    data: {
+                        uid: localStorage.getItem('userid'),
+                        pid: $(this).attr('data-id'),
+                        pnum: nowNum + 1
+                    },
+                    success: (res) => {
+                        $(this).prev().html($(this).prev().html() - 0 + 1);
+                        $(this).parent().parent().children().eq(5).html($(this).attr('data-price') * $(this).prev().html() + '元');
+                        loadAllNum();
+                    },
+                    error: (err) => {
+                        console.log('服务器繁忙');
+                    }
+                })
+            })
+        }
+        /* ----------------------------------全选和单选------------------------------------ */
+        function selAll() {
+            $('#selAll').change(function () {
+                $('.selSingle').prop('checked', this.checked);
+                loadAllNum();
+            })
+        }
+        function selSingle() {
+            $('.selSingle').change(function () {
+                if ($('.selSingle').length == $('.selSingle:checked').length) {
+                    $('#selAll').prop('checked', true);
+                } else {
+                    $('#selAll').prop('checked', false);
+                }
+                loadAllNum();
+            })
+        }
+        /* -----------------------------------购物车总价-------------------------------------*/
+        function loadAllNum() {
+            let count = 0;
+            $('.selSingle:checked').each(function (i, v) {
+                count += parseFloat($(v).parent().children().eq(5).html());
+            })
+            $('#All-price').html(count);
+        }
+        /* ----------------------------用户注销 -------------------------------*/
+        function quit() {
+            $('#account').click(function () {
+                if (parseInt($('#quit').css('height')) == 30) {
+                    $('#quit').animate({
+                        height: 0
+                    })
+                } else {
+                    $('#quit').animate({
+                        height: 30
+                    }, 300)
+                }
+            })
+            $('#quit a').click(function () {
+                let res = confirm('您确认要注销吗?');
+                if (res == true) {
+                    localStorage.clear();
+                    location.href = 'index.html';
+                }
+            })
+        }
+        quit();
+    </script>
+</body>
+
+</html>
