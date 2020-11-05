@@ -3,7 +3,7 @@
 <mapper namespace="com.jk.dao.PictureMapper">
 
     <select id="findLun" resultType="Picture">
-        select * from t_carouse where ad_id = #{id} AND status=1 limit 5
+        select * from t_carouse where `status` = 1 and ad_id = #{id} limit 5
     </select>
 
 </mapper>
