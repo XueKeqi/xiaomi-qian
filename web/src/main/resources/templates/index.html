@@ -8,6 +8,7 @@
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/style.css">
     <script src="../jquery-1.9.1.min.js"></script>
+    <script src="../vue.min.js"></script>
     <style type="text/css">
         *{margin:0;padding:0;}#banner{margin:40px auto;width:1226px;height:460px;background-color:#ff6700;position:relative;}.item{display:none;list-style:none;}
         .item img{width:1226px;height:460px;position:absolute;top:0;left:0;}
@@ -56,10 +57,7 @@
 </head>
 
 <body>
-    <div class="headAD">
-        <a href="index.html"></a>
-    </div>
-
+<div id="app">
     <!--头部信息-->
 
     <div class="head">
@@ -617,54 +615,71 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 <script type="text/javascript">
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            userList: "",
+        }
+    })
+
+
+
     window.onload = function(){
         $(function () {
 
             yy();
             findList();
-            findLista();
+            findLista("3,21");
             findLun();
             findSss();
             fleft();
+            lun();
 
-            var index = 0;
-            //------点击底部小圆点
-            $(".bottom-btn").click(function () {
-                index = $(this).index();                                //获取当前是第几个小圆点
-                $(this).addClass("active").siblings().removeClass("active");   //给小圆点添加鼠标经过的class
-                $(".item").eq(index).fadeIn().siblings().fadeOut();     //fadeIn是淡入    图片淡入淡出效果
-            });
-            //------右箭头
-            $("#zxc").click(function () {
-                index++;
-                if (index > 4)index = 0;            //当到最后一张图，再跳转到第一张
-                $(".item").eq(index).fadeIn().siblings().fadeOut();
-                $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
-            });
-            //------左箭头
-            $("#qwe").click(function () {
-                index--;
-                if (index < 0)index = 4;
-                $(".item").eq(index).fadeIn().siblings().fadeOut();
-                $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
-            });
-            //-------鼠标离开图片，再进行自动轮播
-            function autoplay () {
-                time = setInterval(function () {
-                    index++;
-                    if (index > 4)index = 0;
-                    $(".item").eq(index).fadeIn().siblings().fadeOut();
-                    $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
-                },4000);
-            }
-            autoplay();                 //这里调用自动轮播函数，也就是默认的效果
-            $("#banner").hover(function () {
-                clearInterval(time);    //鼠标经过banner区域，清除计时器
-            },autoplay);                //这里是鼠标退出banner区域，再进行轮播
+                         //这里是鼠标退出banner区域，再进行轮播
         });
     };
+
+    /*轮播图*/
+    function lun(){
+        var index = 0;
+        //------点击底部小圆点
+        $(".bottom-btn").click(function () {
+            index = $(this).index();                                //获取当前是第几个小圆点
+            $(this).addClass("active").siblings().removeClass("active");   //给小圆点添加鼠标经过的class
+            $(".item").eq(index).fadeIn().siblings().fadeOut();     //fadeIn是淡入    图片淡入淡出效果
+        });
+        //------右箭头
+        $("#zxc").click(function () {
+            index++;
+            if (index > 4)index = 0;            //当到最后一张图，再跳转到第一张
+            $(".item").eq(index).fadeIn().siblings().fadeOut();
+            $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
+        });
+        //------左箭头
+        $("#qwe").click(function () {
+            index--;
+            if (index < 0)index = 4;
+            $(".item").eq(index).fadeIn().siblings().fadeOut();
+            $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
+        });
+        //-------鼠标离开图片，再进行自动轮播
+        function autoplay () {
+            time = setInterval(function () {
+                index++;
+                if (index > 4)index = 0;
+                $(".item").eq(index).fadeIn().siblings().fadeOut();
+                $(".bottom-btn").eq(index).addClass("active").siblings().removeClass("active");
+            },4000);
+        }
+        autoplay();                 //这里调用自动轮播函数，也就是默认的效果
+        $("#banner").hover(function () {
+            clearInterval(time);    //鼠标经过banner区域，清除计时器
+        },autoplay);
+    }
 
     //todo setInterval(,) 函数，第一个是定时器触发的函数，第二个是时间
 
@@ -716,10 +731,6 @@
 
 
     function findLista(mid){
-        if(mid == null){
-            mid="3,21";
-        }
-
         $.ajax({
             dataType:"json",
             type:"POST",
@@ -730,6 +741,12 @@
 
                 var str = "";
                 var a = 0;
+                var aa = "";
+                if(mid=="3,21"){
+                    aa += "热门";
+                }else{
+                    aa += "电视影音";
+                }
 
                 for(var i=0;i<data.replies.length ;i++){
                     a++;
@@ -764,7 +781,7 @@
                         str+='<div class="right"></div>';
                         str+='<div class="desc">';
                         str+='<h1>浏览更多</h1>';
-                        str+='<p>热门</p>';
+                        str+='<p>'+aa+'</p>';
                         str+='</div>';
                         str+='</div>';
                         str+='</a>';
@@ -886,8 +903,6 @@
                 div2.style.zIndex = 0;
 
             };
-
-
             div1[i].onmouseover = function(){
                 div2.style.zIndex = 1;
             };
