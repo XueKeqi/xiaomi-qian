@@ -3,12 +3,16 @@ package com.jk.controller;
 import com.jk.entity.Carouse;
 import com.jk.entity.Goods;
 import com.jk.entity.Picture;
+import com.jk.entity.xmUser;
 import com.jk.service.GoodsService;
+import com.jk.service.UserService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +23,8 @@ public class showController {
     @Resource
     private GoodsService goodsService;
 
-
+    @Resource
+    private UserService userService;
 
 
     @RequestMapping("goods/findAll")
@@ -30,6 +35,12 @@ public class showController {
         map.put("replies", list);
         return map;
     }
+
+    @RequestMapping("user/toLogin")
+    public String toLogin(xmUser user){
+         return userService.toLogin(user);
+    }
+
 
     @RequestMapping("findCarouse")
     public List<Carouse> findCarouse(){
@@ -43,6 +54,7 @@ public class showController {
         map.put("replies", list);
         return map;
     }
+
 
 
 }
