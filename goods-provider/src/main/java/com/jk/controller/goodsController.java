@@ -19,10 +19,6 @@ public class goodsController {
     private GoodsService goodsService;
 
 
-    @RequestMapping("asd")
-    public String asd(){
-        return "asd";
-    }
 
 
     @RequestMapping("goods/findAll")

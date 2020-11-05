@@ -11,5 +11,4 @@ import javax.servlet.http.HttpSession;
 public interface UserService {
     @RequestMapping("user/toLogin")
     public String toLogin(@RequestBody xmUser user);
-
 }

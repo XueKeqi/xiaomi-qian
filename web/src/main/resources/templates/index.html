@@ -160,12 +160,12 @@
 
                 <div id="banner" style="">
                     <div class="img-wrap">
-                        <ul>
-                            <li class="item" style="display: block;"><img src="./images/good1.jpg"/></li>
+                        <ul id="lunbo">
+                            <!--<li class="item" style="display: block;"><img src="./images/good1.jpg"/></li>
                             <li class="item"><img src="./images/good2.jpg"/></li>
                             <li class="item"><img src="./images/good3.jpg"/></li>
                             <li class="item"><img src="./images/good4.jpg"/></li>
-                            <li class="item"><img src="./images/good5.jpg"/></li>
+                            <li class="item"><img src="./images/good5.jpg"/></li>-->
                         </ul>
                     </div>
                     <div class="lr-tab">
@@ -598,6 +598,7 @@
 
             findList();
             findLista();
+            findLun();
 
             var index = 0;
             //------点击底部小圆点
@@ -663,10 +664,11 @@
                     var title=arr[i].title;
                     var detail=arr[i].detail;
                     var price=arr[i].price;
+                    var images = arr[i].images;
                     if(cid == 1){
                         str+="<li><a href=\'#\'>";
                         str+="<div class=\'shop-content-li\'>";
-                        str+="<img src=\'./picture/小米10 至尊版.webp\' alt=\'\'>";
+                        str+='<img src="'+images+'" alt="">';
                         str+="<h3 class=\'ellipse\'>"+title+"</h3>";
                         str+="<p class=\'ellipse\'>"+detail+"</p>";
                         str+="<p class=\'price\'><span>"+price+"</span></p>";
@@ -755,21 +757,42 @@
     /*轮播图*/
 
     function findLun(){
-        var mid="1";
+        var id="1";
         $.ajax({
             dataType:"json",
             type:"POST",
-            url:"../goods/findLun",
-            data:{mid:mid},
+            url:"../pictur/findLun",
+            data:{id:id},
             success:function(data){
                 var arr=data.replies;
 
                 var str = "";
+                var a = 0;
+                /*
+                <li class="item" style="display: block;"><img src="./images/good1.jpg"/></li>
+                <li class="item"><img src="./images/good2.jpg"/></li>
+                <li class="item"><img src="./images/good3.jpg"/></li>
+                <li class="item"><img src="./images/good4.jpg"/></li>
+                <li class="item"><img src="./images/good5.jpg"/></li>
+                */
 
                 for(var i=0;i<data.replies.length;i++){
-
-
+                    a++;
+                    var sid=arr[i].siId;
+                    var aid = arr[i].acId;
+                    var title=arr[i].title;
+                    var url=arr[i].url;
+                    var status=arr[i].status;
+                    if(a<=1){
+                        str+='<li class="item" style="display: block;"><img src="'+url+'"/></li>';
+                    }else{
+                        str+='<li class="item"><img src="'+url+'"/></li>';
+                    }
+                    $("#lunbo").html(str);
                 }
+
+                //alert(str);
+
             },error:function(data){
                 alert(系统错误);
             }

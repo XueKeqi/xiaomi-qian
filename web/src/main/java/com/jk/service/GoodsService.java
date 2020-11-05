@@ -16,10 +16,12 @@ public interface GoodsService {
     @RequestMapping("goods/findAll")
     public List<Goods> findAll(@RequestParam String mid);
 
+    @RequestMapping("pictur/findLun")
+    public List<Picture> findLun(@RequestParam Integer mid);
+
+
     @RequestMapping("goods/findCarouse")
     public List<Carouse> findCarouse();
 
-    @RequestMapping("goods/findLun")
-    public List<Picture> findLun(@RequestParam String mid);
 
 }

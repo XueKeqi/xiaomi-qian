@@ -29,12 +29,21 @@ public class showController {
 
     @RequestMapping("goods/findAll")
     public Map<String, Object> findAll(String mid){
-
         List<Goods> list = goodsService.findAll(mid);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("replies", list);
         return map;
     }
+
+        /*轮播图*/
+        @RequestMapping("pictur/findLun")
+    public Map<String, Object> findLun(Integer id){
+        List<Picture> list = goodsService.findLun(id);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("replies", list);
+        return map;
+    }
+
 
     @RequestMapping("user/toLogin")
     public String toLogin(xmUser user){
@@ -47,13 +56,7 @@ public class showController {
         return goodsService.findCarouse();
     }
 
-    @RequestMapping("goods/findLun")
-    public Map<String, Object> findLun(String mid){
-        List<Picture> list = goodsService.findLun(mid);
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("replies", list);
-        return map;
-    }
+
 
 
 

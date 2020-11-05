@@ -16,9 +16,14 @@ public class PictureController {
     private PictureService pictureService;
 
 
+    @RequestMapping("asd")
+    public String asd(){
+        return "asd";
+    }
+
 
     @RequestMapping("pictur/findLun")
-    public List<Picture> findLun(@RequestParam String mid){
+    public List<Picture> findLun(@RequestParam Integer mid){
         return pictureService.findLun(mid);
     }
 

@@ -16,7 +16,7 @@ public class PictureServiceImpl implements PictureService {
     private PictureMapper pictureMapper;
 
     @Override
-    public List<Picture> findLun(String mid) {
+    public List<Picture> findLun(Integer mid) {
         return pictureMapper.findLun(mid);
     }
 }
