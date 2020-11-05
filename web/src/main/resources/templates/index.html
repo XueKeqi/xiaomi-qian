@@ -29,7 +29,7 @@
             width:981px;
             height:460px;
             position:absolute;
-            z-index: 1;
+            z-index: 0;
             margin-top: 40px;
             margin-left: 245px;
         }
@@ -171,33 +171,9 @@
 
     </div>-->
 
-    <div id="div2" class="banner_menu_content">
-        <ul class="banner_menu_content_ul">
-            <li>
-                <a><img src="img/minote.jpg"></a><a>大米NOTE</a><span>选购</span></li>
-            <li>
-                <a><img src="./images/mi4.jpg"></a><a>大米手机4</a><span>选购</span></li>
-            <li>
-                <a><img src="./images/hongmi2.jpg"></a><a>红米手机2</a><span>选购</span></li>
-            <li>
-                <a><img src="./images/hongmi2a.jpg"></a><a>红米手机2A</a><span>选购</span></li>
-            <li>
-                <a><img src="./images/note2.jpg"></a><a>红米NOTE2</a><span>选购</span></li>
-            <li>
-                <a><img src="./images/note2.jpg"></a><a>红米NOTE&nbsp;4G双卡</a><span>选购</span></li>
-        </ul>
-        <ul class="banner_menu_content_ul">
-            <li>
-                <a><img src="./images/mipad.jpg"></a><a>大米平板</a><span>选购</span></li>
-            <li>
-                <a><img src="./images/telcom.jpg"></a><a>电信版</a></li>
-            <li>
-                <a><img src="./images/heyue.jpg"></a><a>合约机</a></li>
-            <li>
-                <a><img src="./images/zhongxin.jpg"></a><a>中信特权</a></li>
-            <li>
-                <a><img src="./images/compare.jpg"></a><a>对比手机</a></li>
-        </ul>
+    <div id="div2">
+
+
     </div>
 
 
@@ -321,7 +297,7 @@
                 <div class="miaosha-shop">
                     <ul class="clearfix">
                         <li>
-                            <a href="#">
+                            <a href="miaosha">
                                 <div class="miaosha-box">
                                     <div class="miaosha-goods-img">
                                         <img src="./picture/全面屏电视.jpg" alt="">
@@ -416,8 +392,8 @@
                 <span>家电</span>
                 <div class="tab-title">
                     <ul class="clearfix">
-                        <li>热门</li>
-                        <li>电视影音</li>
+                        <li id = "rm">热门</li>
+                        <li id="dsyy">电视影音</li>
                     </ul>
                 </div>
             </div>
@@ -646,10 +622,12 @@
     window.onload = function(){
         $(function () {
 
+            yy();
             findList();
             findLista();
             findLun();
-            findSss()
+            findSss();
+            fleft();
 
             var index = 0;
             //------点击底部小圆点
@@ -737,8 +715,11 @@
     }
 
 
-    function findLista(){
-        var mid="3,21";
+    function findLista(mid){
+        if(mid == null){
+            mid="3,21";
+        }
+
         $.ajax({
             dataType:"json",
             type:"POST",
@@ -801,6 +782,26 @@
                 // alert(str);
 
         });
+    }
+
+
+    /*电视影音*/
+    function yy(){
+
+        var dsyy = document.getElementById("dsyy")
+
+        var rm = document.getElementById("rm")
+
+        dsyy.onmouseover = function(){
+            findLista(3);
+        };
+        rm.onmouseover = function(){
+            findLista("3,21");
+        };
+
+
+
+
     }
 
 
@@ -871,31 +872,35 @@
     }
 
 
-    var div1 = document.getElementsByClassName("li1");
-    var div2 = document.getElementById("div2")
+    function fleft(){
+        var div1 = document.getElementsByClassName("li1");
+        var div2 = document.getElementById("div2")
 
-    for (var i=0;i<div1.length;i++){
-
-
-       /* div2.onmouseover = function(){
-            div2.style.zIndex = 1;
-        };
-        div2.onmouseout = function(){
-            div2.style.zIndex = 0;
-
-        };
+        for (var i=0;i<div1.length;i++){
 
 
-        div1[i].onmouseover = function(){
-            div2.style.zIndex = 1;
-        };
+            div2.onmouseover = function(){
+                div2.style.zIndex = 1;
+            };
+            div2.onmouseout = function(){
+                div2.style.zIndex = 0;
 
-        div1[i].onmouseout = function(){
-            div2.style.zIndex = 0;
+            };
 
-        };*/
 
+            div1[i].onmouseover = function(){
+                div2.style.zIndex = 1;
+            };
+
+            div1[i].onmouseout = function(){
+                div2.style.zIndex = 0;
+
+            };
+
+        }
     }
+
+
 
 
 
