@@ -35,6 +35,37 @@
             margin-left: 245px;
         }
 
+
+        #aaa > li {
+
+            text-align: right;
+            line-height: 76px;
+            font-size: 13px;
+            margin: 10px 21px;
+            width: 200px;
+            height: 76px;
+            display: inline-block;
+
+        }
+
+        .aaimg{
+
+           /*margin: 15px 15px;*/
+            padding: 15px 0 0 0px;
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+            float: left
+
+        }
+
+        #qwea{
+            display: inline-block;
+            width: 155px;
+            text-align: left
+        }
+
+
 /*
         .banner_menu_content_ul li{
             background-color: #2196F3;
@@ -84,9 +115,9 @@
                     <em class="car"></em>
                     <em>购物车</em>
                 </a>
-                <div class="nav-car-list">
+                <!--<div class="nav-car-list">
                     <p>购物车中还没有商品，赶紧选购吧！</p>
-                </div>
+                </div>-->
             </div>
             <div class="nav-right">
                 <ul>
@@ -170,7 +201,9 @@
     </div>-->
 
     <div id="div2">
+        <ul id="aaa">
 
+        </ul>
 
     </div>
 
@@ -902,15 +935,17 @@
 
         for (var i=0;i<div1.length;i++){
 
-
             div2.onmouseover = function(){
+
                 div2.style.zIndex = 1;
             };
             div2.onmouseout = function(){
                 div2.style.zIndex = 0;
 
             };
+            /*alert(i)*/
             div1[i].onmouseover = function(){
+                flefta(1);
                 div2.style.zIndex = 1;
             };
 
@@ -922,6 +957,36 @@
         }
     }
 
+
+
+function flefta(mid){
+    //var mid="1";
+    $.ajax({
+        dataType:"json",
+        type:"POST",
+        url:"../goods/findAll",
+        data:{mid:mid},
+        success:function(data){
+            var arr=data.replies;
+            var str = "";
+            for(var i=0;i<data.replies.length;i++){
+
+                var title=arr[i].title;
+                var images = arr[i].images;
+
+                str+='<li><img class="aaimg" src="'+images+'" ><div id="qwea">'+title+'</div></li>';
+
+
+                $("#aaa").html(str);
+
+            }
+        },error:function(data){
+            alert(系统错误);
+        }
+    });
+
+
+}
 
 
 

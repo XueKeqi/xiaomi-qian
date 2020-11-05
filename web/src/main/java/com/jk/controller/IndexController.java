@@ -16,6 +16,11 @@ public class IndexController {
         return "miaosha";
     }
 
+    @RequestMapping("/mycart")
+    public String mycart(){
+        return "mycart";
+    }
+
     @RequestMapping("/login")
     public String login(){
         return "login";
