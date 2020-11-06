@@ -1,11 +1,14 @@
 package com.jk.controller;
 
+import com.jk.config.RedisContent;
 import com.jk.entity.Carouse;
 import com.jk.entity.Goods;
 import com.jk.entity.Picture;
 import com.jk.entity.xmUser;
 import com.jk.service.GoodsService;
 import com.jk.service.UserService;
+import com.jk.utils.RedisUtil;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,12 +29,21 @@ public class showController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private RedisTemplate redisTemplate;
+
+    @Resource
+    private RedisUtil redisUtil;
+
+
+
 
     @RequestMapping("goods/findAll")
     public Map<String, Object> findAll(String mid){
         List<Goods> list = goodsService.findAll(mid);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("replies", list);
+
         return map;
     }
 
@@ -39,8 +51,9 @@ public class showController {
         @RequestMapping("pictur/findLun")
     public Map<String, Object> findLun(Integer id){
         List<Picture> list = goodsService.findLun(id);
+        System.out.print(list);
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("replies", list);
+        map.put("lun", list);
         return map;
     }
 

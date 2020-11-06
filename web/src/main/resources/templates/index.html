@@ -40,7 +40,7 @@
 
             text-align: right;
             line-height: 76px;
-            font-size: 13px;
+            font-size: 14px;
             margin: 10px 38px;
             width: 250px;
             height: 76px;
@@ -796,7 +796,7 @@
                     var detail=arr[i].detail;
                     var price=arr[i].price;
                     var img = arr[i].images;
-                    //alert(img);
+                    //alert(title);
                     if(a<=7){
 
                         str+='<li>';
@@ -875,17 +875,14 @@
             url:"../pictur/findLun",
             data:{id:id},
             success:function(data){
-                var arr=data.replies;
 
+                var arr=data.lun;
                 var str = "";
                 var a = 0;
-                for(var i=0;i<data.replies.length;i++){
+                for(var i=0;i<arr.length;i++){
                     a++;
-                    var sid=arr[i].siId;
-                    var aid = arr[i].acId;
-                    var title=arr[i].title;
                     var url=arr[i].url;
-                    var status=arr[i].status;
+                    //alert(url)
                     if(a<=1){
                         str+='<li class="item" style="display: block;"><img src="'+url+'"/></li>';
                     }else{
@@ -908,17 +905,13 @@
             url:"../pictur/findLun",
             data:{id:id},
             success:function(data){
-                var arr=data.replies;
+                var arr=data.lun;
 
                 var str = "";
                 var a = 0;
-                for(var i=0;i<data.replies.length;i++){
+                for(var i=0;i<arr.length;i++){
                     a++;
-                    var sid=arr[i].siId;
-                    var aid = arr[i].acId;
-                    var title=arr[i].title;
                     var url=arr[i].url;
-                    var status=arr[i].status;
 
                         str+='<img src="'+url+'"/>';
 
