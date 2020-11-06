@@ -7,6 +7,7 @@
         <foreach collection="array" open="(" close=")" separator="," item="mid">
             #{mid}
         </foreach>
+    order by sale desc
     limit 8
     </select>
 

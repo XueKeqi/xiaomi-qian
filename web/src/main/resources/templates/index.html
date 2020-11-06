@@ -26,7 +26,7 @@
         }
 
         #div2{
-            background-color:#f8f8f8;
+            background-color:#ffffff;
             width:981px;
             height:460px;
             position:absolute;
@@ -41,8 +41,8 @@
             text-align: right;
             line-height: 76px;
             font-size: 13px;
-            margin: 10px 21px;
-            width: 200px;
+            margin: 10px 38px;
+            width: 250px;
             height: 76px;
             display: inline-block;
 
@@ -61,7 +61,7 @@
 
         #qwea{
             display: inline-block;
-            width: 155px;
+            width: 207px;
             text-align: left
         }
 
@@ -244,10 +244,10 @@
             </div>
             <div class="list">
                 <ul>
-                    <li class="li1"><a href="#">手机&nbsp;电话卡<img src="./images/箭头.png"></img></a></li>
-                    <li class="li1"><a href="#">电视&nbsp;盒子<img src="./images/箭头.png"></img></a></li>
+                    <li class="li1" onmousemove="fleft(1)" onmouseout="fleftaa()"><a href="#">手机&nbsp;电话卡<img src="./images/箭头.png"></img></a></li>
+                    <li class="li1" onmousemove="fleft(3)" onmouseout="fleftaa()"><a href="#">电视&nbsp;盒子<img src="./images/箭头.png"></img></a></li>
                     <li class="li1"><a href="#">笔记本&nbsp;显示器<img src="./images/箭头.png"></img></a></li>
-                    <li class="li1"><a href="#">家电&nbsp;插线板<img src="./images/箭头.png"></img></a></li>
+                    <li class="li1" onmousemove="fleft(21)" onmouseout="fleftaa()"><a href="#">家电&nbsp;插线板<img src="./images/箭头.png"></img></a></li>
                     <li class="li1"><a href="#">出行&nbsp;穿戴<img src="./images/箭头.png"></img></a></li>
                     <li class="li1"><a href="#">智能&nbsp;路由器<img src="./images/箭头.png"></img></a></li>
                     <li class="li1"><a href="#">电源&nbsp;配件<img src="./images/箭头.png"></img></a></li>
@@ -676,7 +676,7 @@
             findLista("3,21");
             findLun();
             findSss();
-            fleft();
+            //fleft();
             lun();
 
                          //这里是鼠标退出banner区域，再进行轮播
@@ -795,12 +795,14 @@
                     var title=arr[i].title;
                     var detail=arr[i].detail;
                     var price=arr[i].price;
+                    var img = arr[i].images;
+                    //alert(img);
                     if(a<=7){
 
                         str+='<li>';
                         str+='<a href="#">';
                         str+='<div class="shop-img">';
-                        str+='<img src="./picture/ef4c68fed730ec26bf2fa0ff620975c5.webp" alt="">';
+                        str+='<img src="'+img+'" alt="">';
                         str+='</div>';
                         str+='<h3 class="ellipse">'+title+'</h3>';
                         str+='<p class="ellipse">'+detail+'</p>';
@@ -811,7 +813,7 @@
                         str+='<li class="last">';
                         str+='<a href="#">';
                         str+='<div class="shop-list-box-top">';
-                        str+='<img src="./picture/74e573c4c0d89048392d14831cc507d5.webp" alt="">';
+                        str+='<img src="'+img+'" alt="">';
                         str+='<h3>'+title+'</h3>';
                         str+='<span>'+price+'元起</span>';
                         str+='</div>';
@@ -929,32 +931,46 @@
     }
 
 
-    function fleft(){
-        var div1 = document.getElementsByClassName("li1");
-        var div2 = document.getElementById("div2")
+    function fleftaa(){
+        var div2 = document.getElementById("div2");
+        div2.style.zIndex = 0;
+        div2.onmouseout = function(){
+            div2.style.zIndex = 0;
 
-        for (var i=0;i<div1.length;i++){
+        };
+    }
 
-            div2.onmouseover = function(){
+    function fleft(id){
+        //alert(id)
+        var div2 = document.getElementById("div2");
 
-                div2.style.zIndex = 1;
-            };
-            div2.onmouseout = function(){
-                div2.style.zIndex = 0;
+        flefta(id);
+        div2.style.zIndex = 1;
+        div2.onmouseover = function(){
 
-            };
-            /*alert(i)*/
-            div1[i].onmouseover = function(){
-                flefta(1);
-                div2.style.zIndex = 1;
-            };
+            div2.style.zIndex = 1;
+        };
 
-            div1[i].onmouseout = function(){
-                div2.style.zIndex = 0;
+        /*var div1 = document.getElementsByClassName("li1");
+        var div2 = document.getElementById("div2");
 
-            };
+        div2.onmouseover = function(){
 
-        }
+            div2.style.zIndex = 1;
+        };
+        div2.onmouseout = function(){
+            div2.style.zIndex = 0;
+
+        };
+        div1[id].onmouseover = function(){
+            flefta(id);
+            div2.style.zIndex = 1;
+        };
+
+        div1[id].onmouseout = function(){
+            div2.style.zIndex = 0;
+
+        };*/
     }
 
 
@@ -974,7 +990,8 @@ function flefta(mid){
                 var title=arr[i].title;
                 var images = arr[i].images;
 
-                str+='<li><img class="aaimg" src="'+images+'" ><div id="qwea">'+title+'</div></li>';
+
+                str+='<li><a href="#"><img class="aaimg" src="'+images+'" ><div id="qwea">'+title+'</div></a></li>';
 
 
                 $("#aaa").html(str);

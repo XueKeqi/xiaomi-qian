@@ -11,6 +11,11 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/detail")
+    public String detail(){
+        return "detail";
+    }
+
     @RequestMapping("/miaosha")
     public String miaosha(){
         return "miaosha";
