@@ -2,9 +2,10 @@ package com.jk.dao;
 
 import com.jk.entity.Carouse;
 import com.jk.entity.Picture;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-
+@Mapper
 public interface CarouseMapper {
     int deleteByPrimaryKey(Integer siId);
 

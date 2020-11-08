@@ -31,4 +31,7 @@ public class IndexController {
         return "login";
     }
 
+    @RequestMapping("/mycar")
+    public String mycar() { return "mycar";}
+
 }

@@ -981,5 +981,4 @@ public class RedisUtil {
         redisTemplate.delete(keys);
     }
 
-
 }

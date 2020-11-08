@@ -738,17 +738,15 @@
             url:"../goods/findAll",
             data:{mid:mid},
             success:function(data){
-                var arr=data.replies;
-
                 var str = "";
 
-                for(var i=0;i<data.replies.length;i++){
-                    var id=arr[i].id;
-                    var cid = arr[i].categoryId;
-                    var title=arr[i].title;
-                    var detail=arr[i].detail;
-                    var price=arr[i].price;
-                    var images = arr[i].images;
+                for(var i=0;i<data.length;i++){
+                    var id=data[i].id;
+                    var cid = data[i].categoryId;
+                    var title=data[i].title;
+                    var detail=data[i].detail;
+                    var price=data[i].price;
+                    var images = data[i].images;
                     if(cid == 1){
                         str+="<li><a href=\'#\'>";
                         str+="<div class=\'shop-content-li\'>";
@@ -777,7 +775,7 @@
             url:"../goods/findAll",
             data:{mid:mid},
             success:function(data){
-                var arr=data.replies;
+                //var arr=data.replies;
 
                 var str = "";
                 var a = 0;
@@ -788,14 +786,15 @@
                     aa += "电视影音";
                 }
 
-                for(var i=0;i<data.replies.length ;i++){
+                for(var i=0;i<data.length ;i++){
                     a++;
-                    var id=arr[i].id;
-                    var cid = arr[i].categoryId;
-                    var title=arr[i].title;
-                    var detail=arr[i].detail;
-                    var price=arr[i].price;
-                    var img = arr[i].images;
+                    //data[i].title
+                    var id=data[i].id;
+                    var cid = data[i].categoryId;
+                    var title=data[i].title;
+                    var detail=data[i].detail;
+                    var price=data[i].price;
+                    var img = data[i].images;
                     //alert(title);
                     if(a<=7){
 
@@ -976,12 +975,12 @@ function flefta(mid){
         url:"../goods/findAll",
         data:{mid:mid},
         success:function(data){
-            var arr=data.replies;
+           // var arr=data.replies;
             var str = "";
-            for(var i=0;i<data.replies.length;i++){
+            for(var i=0;i<data.length;i++){
 
-                var title=arr[i].title;
-                var images = arr[i].images;
+                var title=data[i].title;
+                var images = data[i].images;
 
 
                 str+='<li><a href="#"><img class="aaimg" src="'+images+'" ><div id="qwea">'+title+'</div></a></li>';

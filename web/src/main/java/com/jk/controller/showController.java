@@ -1,10 +1,7 @@
 package com.jk.controller;
 
 import com.jk.config.RedisContent;
-import com.jk.entity.Carouse;
-import com.jk.entity.Goods;
-import com.jk.entity.Picture;
-import com.jk.entity.xmUser;
+import com.jk.entity.*;
 import com.jk.service.GoodsService;
 import com.jk.service.UserService;
 import com.jk.utils.RedisUtil;
@@ -39,13 +36,26 @@ public class showController {
 
 
     @RequestMapping("goods/findAll")
-    public Map<String, Object> findAll(String mid){
-        List<Goods> list = goodsService.findAll(mid);
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("replies", list);
+    public List<Goods> findAll(String mid){
+        List<Goods> goodsList = (List)redisUtil.get(RedisContent.GOODS_LIST_KEY );
+        if(goodsList == null || goodsList.isEmpty()) {
+            goodsList = goodsService.findAll(mid);
+            redisUtil.set(RedisContent.GOODS_LIST_KEY, goodsList);
+            // 设置key的过期时间
+            //redisUtil.expire(RedisContent.GOODS_LIST_KEY , 60);
+        }
 
-        return map;
+        return goodsList;
     }
+
+
+
+    @RequestMapping("goods/findmiao")
+    public List<MiaoshaGoods> findmiao(Integer num){
+        return goodsService.findmiaosha(num);
+    }
+
+
 
         /*轮播图*/
         @RequestMapping("pictur/findLun")

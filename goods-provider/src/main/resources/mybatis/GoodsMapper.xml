@@ -11,6 +11,11 @@
     limit 8
     </select>
 
+    <select id="findmiaosha" resultType="com.jk.entity.MiaoshaGoods" parameterType="Integer">
+        select a.*,b.images,b.price,b.title,c.`start`,c.`end` from goods_miaosha a left join goods_spu b on a.goods_id = b.id LEFT join miaotime c on a.time_id = c.id
+        WHERE c.id = #{num}
+    </select>
+
 
 
 

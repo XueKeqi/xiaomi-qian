@@ -2,6 +2,7 @@ package com.jk.service;
 
 import com.jk.entity.Carouse;
 import com.jk.entity.Goods;
+import com.jk.entity.MiaoshaGoods;
 import com.jk.entity.Picture;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,9 @@ public interface GoodsService {
 
     @RequestMapping("pictur/findLun")
     public List<Picture> findLun(@RequestParam Integer mid);
+
+    @RequestMapping("miaosha/findmiaosha")
+    public List<MiaoshaGoods> findmiaosha(@RequestParam Integer num);
 
 
     @RequestMapping("goods/findCarouse")
