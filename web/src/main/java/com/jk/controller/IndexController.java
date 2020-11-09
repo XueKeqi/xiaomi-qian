@@ -21,17 +21,14 @@ public class IndexController {
         return "miaosha";
     }
 
-    @RequestMapping("/mycart")
+    @RequestMapping("/mycar")
     public String mycart(){
-        return "mycart";
+        return "mycar";
     }
 
     @RequestMapping("/login")
     public String login(){
         return "login";
     }
-
-    @RequestMapping("/mycar")
-    public String mycar() { return "mycar";}
 
 }

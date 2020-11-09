@@ -8,6 +8,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/carts.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/carts.js"></script>
     <!-- <meta name="description" content>
@@ -22,29 +23,90 @@
 <body>
 <div id="app">
     <div ref="J_siteHeader">
-        
-    <div class="site-header site-mini-header">
-        <div class="container">
-            <div class="header-logo">
-                <a class="logo ir" href="//www.mi.com/index.html" title="小米官网">小米官网</a>
-            </div>
-            <div class="header-title has-more" id="J_miniHeaderTitle">
-                <h2>
-                    我的购物车
-                </h2>
-                <p>
-                    
-                </p>
-            </div>
-            
-            <div class="site-topbar ">
-                <div class="topbar-info" id="J_siteUserInfo">
-                    <a rel="nofollow" class="link"  data-agreement="true" data-login="true">登录</a>
-                    <span class="sep">|</span>
-                    <a rel="nofollow" class="link"  data-agreement="true" data-register="true">注册</a>
+
+    <div class="site-header site-mini-header" style="height: 125px">
+        <div class="head">
+            <div class="nav clearfix">
+                <div class="nav-left">
+                    <ul>
+                        <li><a href="#">小米商城</a><span>|</span></li>
+                        <li><a href="#">MIUI</a><span>|</span></li>
+                        <li><a href="#">IoT</a><span>|</span></li>
+                        <li><a href="#">云服务</a><span>|</span></li>
+                        <li><a href="#">金融</a><span>|</span></li>
+                        <li><a href="#">有品</a><span>|</span></li>
+                        <li><a href="#">小爱开放平台</a><span>|</span></li>
+                        <li><a href="#">企业团购</a><span>|</span></li>
+                        <li><a href="#">资质证照</a><span>|</span></li>
+                        <li><a href="#">协议规则</a><span>|</span></li>
+                        <li><a href="#">下载app</a><span>|</span></li>
+                        <li><a href="#">智能生活</a><span>|</span></li>
+                        <li><a href="#">Select Location</a><span>|</span></li>
+                    </ul>
+                </div>
+                <div class="nav-car">
+                    <a href="#">
+                        <em class="car"></em>
+                        <em>购物车</em>
+                    </a>
+                    <!--<div class="nav-car-list">
+                        <p>购物车中还没有商品，赶紧选购吧！</p>
+                    </div>-->
+                </div>
+                <div class="nav-right">
+                    <ul>
+                        <li><a href="./login">登录</a><span>|</span></li>
+                        <li><a href="#">注册</a><span>|</span></li>
+                        <li><a href="#">消息通知</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
+
+
+        <div class="nav clearfix" style="height: 100px">
+            <div class="content-head clearfix" style="float:left;margin-top: 20px">
+
+
+                <div class="logo-box">
+                    <a href="index">
+                        <div class="logo">
+                            <img src="./images/mi-home.png" alt="MI">
+                            <img src="./images/mi-logo.png" alt="MI">
+                        </div>
+                    </a>
+                </div>
+
+
+                <div id="ggg" style="float: left;margin-left: 75px;line-height: 50px;text-align: center;font-size: 16px;">
+                    <b><a href="#">全部商品分类</a></b>
+                </div>
+
+
+
+                <div class="guid">
+                    <ul>
+                        <li><a href="#">小米手机</a></li>
+                        <li class="asda"><a href="#">Redmi红米</a></li>
+                        <li class="asda"><a href="#">电视</a></li>
+                        <li class="asda"><a href="#">笔记本</a></li>
+                        <li class="asda"><a href="#">家电</a></li>
+                        <li class="asda"><a href="#">路由器</a></li>
+                        <li class="asda"><a href="#">智能硬件</a></li>
+                        <li class="asda"><a href="#">服务</a></li>
+                        <li class="asda"><a href="#">社区</a></li>
+                    </ul>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" class="input" placeholder="耳机">
+                    <div class="search-icon"></div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 
     </div>
@@ -68,16 +130,6 @@
             </div>
     
             <div class="cartBox">
-                <div class="shop_info">
-                    <div class="all_check">
-                        <!--店铺全选-->
-                        <input type="checkbox" id="shop_a" class="shopChoice">
-                        <label for="shop_a" class="shop"></label>
-                    </div>
-                    <div class="shop_name">
-                        店铺：<a href="javascript:;">搜猎人艺术生活</a>
-                    </div>
-                </div>
                 <div class="order_content">
                    
             
