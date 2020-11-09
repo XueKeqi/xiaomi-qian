@@ -16,6 +16,10 @@
         WHERE c.id = #{num}
     </select>
 
+    <select id="findLie" resultType="com.jk.entity.Classify" parameterType="Integer">
+        SELECT * FROM goods_classify WHERE category_id = #{num}
+    </select>
+
 
 
 

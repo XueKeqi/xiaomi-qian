@@ -23,12 +23,16 @@ public class IndexController {
 
     @RequestMapping("/mycar")
     public String mycart(){
-        return "mycar";
-    }
+        return "mycar"; }
 
     @RequestMapping("/login")
     public String login(){
         return "login";
+    }
+
+    @RequestMapping("/miList")
+    public String miList(){
+        return "miList";
     }
 
 }

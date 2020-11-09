@@ -42,8 +42,10 @@ public class showController {
             goodsList = goodsService.findAll(mid);
             redisUtil.set(RedisContent.GOODS_LIST_KEY, goodsList);
             // 设置key的过期时间
-            //redisUtil.expire(RedisContent.GOODS_LIST_KEY , 60);
+            redisUtil.expire(RedisContent.GOODS_LIST_KEY , 60);
         }
+
+
 
         return goodsList;
     }
@@ -87,6 +89,11 @@ public class showController {
         return goodsService.findCarouse();
     }
 
+
+    @RequestMapping("goods/findLie")
+    public List<Classify> findLie(Integer num){
+            return goodsService.findLie(num);
+    }
 
 
 
