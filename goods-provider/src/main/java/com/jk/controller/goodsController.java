@@ -42,6 +42,11 @@ public class goodsController {
         return goodsService.findLie(num);
     }
 
+    @RequestMapping("goods/findAie")
+    List<Goods> findAie(@RequestParam String mid, @RequestParam String lab){
+        return goodsService.findAie(mid,lab);
+    }
+
 
 
 }

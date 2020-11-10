@@ -9,6 +9,8 @@ public class Classify {
     private String value;
     private Integer categoryId;
 
+    private String[] arr;
+
 
 
 

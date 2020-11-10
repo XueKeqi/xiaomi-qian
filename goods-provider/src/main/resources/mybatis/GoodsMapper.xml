@@ -20,6 +20,13 @@
         SELECT * FROM goods_classify WHERE category_id = #{num}
     </select>
 
+    <select id="findAie" resultType="com.jk.entity.Goods">
+
+        select a.*,b.label from goods_spu a left join goods_label b on a.label = b.id
+        WHERE a.category_id = ${mid} and  a.label in (${lab})
+
+    </select>
+
 
 
 

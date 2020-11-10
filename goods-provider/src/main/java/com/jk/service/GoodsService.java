@@ -12,4 +12,6 @@ public interface GoodsService {
     List<MiaoshaGoods> findmiaosha(Integer num);
 
     List<Classify> findLie(Integer num);
+
+    List<Goods> findAie(String mid, String lab);
 }

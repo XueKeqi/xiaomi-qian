@@ -4,6 +4,7 @@ import com.jk.entity.Classify;
 import com.jk.entity.Goods;
 
 import com.jk.entity.MiaoshaGoods;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 
@@ -16,4 +17,6 @@ public interface GoodsMapper {
     List<MiaoshaGoods> findmiaosha(Integer c);
 
     List<Classify> findLie(Integer num);
+
+    List<Goods> findAie(@Param("mid") String mid,@Param("lab") String lab);
 }

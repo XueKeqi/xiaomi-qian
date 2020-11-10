@@ -762,7 +762,7 @@
                     }
                 }
             },error:function(data){
-                alert(系统错误);
+                alert("系统错误");
             }
         });
     }
@@ -828,16 +828,10 @@
                         str+='</a>';
                         str+='</li>';
                     }
-                    //$("#ula_list").append(str)
-                  // $("ul").append("<li>" + value +"</li>");
-                    //$("ul").append($("ol li"));
                     $("#ula_list").html(str);
                     }
-
-
-                    // $('#reply_'+mid).prepend("<dl style='background-color:pink;'><dt>"+content+"</dt><dd>回复者："+name+"</dd><dd>回复时间："+time+"</dd></dl>");
+                    repend("<dl style='background-color:pink;'><dt>"+content+"</dt><dd>回复者："+name+"</dd><dd>回复时间："+time+"</dd></dl>");
                 }
-                // alert(str);
 
         });
     }
@@ -851,7 +845,7 @@
         var rm = document.getElementById("rm")
 
         dsyy.onmouseover = function(){
-            findLista(3);
+            findLista("3");
         };
         rm.onmouseover = function(){
             findLista("3,21");
@@ -890,7 +884,7 @@
                     $("#lunbo").html(str);
                 }
             },error:function(data){
-                alert(系统错误);
+                alert("系统错误");
             }
         });
     }
@@ -917,7 +911,7 @@
                     $("#sss").html(str);
                 }
             },error:function(data){
-                alert(系统错误);
+                alert("系统错误");
             }
         });
     }
@@ -933,36 +927,13 @@
     }
 
     function fleft(id){
-        //alert(id)
         var div2 = document.getElementById("div2");
 
         flefta(id);
         div2.style.zIndex = 1;
         div2.onmouseover = function(){
-
             div2.style.zIndex = 1;
         };
-
-        /*var div1 = document.getElementsByClassName("li1");
-        var div2 = document.getElementById("div2");
-
-        div2.onmouseover = function(){
-
-            div2.style.zIndex = 1;
-        };
-        div2.onmouseout = function(){
-            div2.style.zIndex = 0;
-
-        };
-        div1[id].onmouseover = function(){
-            flefta(id);
-            div2.style.zIndex = 1;
-        };
-
-        div1[id].onmouseout = function(){
-            div2.style.zIndex = 0;
-
-        };*/
     }
 
 
@@ -990,7 +961,7 @@ function flefta(mid){
 
             }
         },error:function(data){
-            alert(系统错误);
+            alert("系统错误");
         }
     });
 

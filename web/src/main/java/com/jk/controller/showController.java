@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,13 +38,15 @@ public class showController {
 
     @RequestMapping("goods/findAll")
     public List<Goods> findAll(String mid){
-        List<Goods> goodsList = (List)redisUtil.get(RedisContent.GOODS_LIST_KEY );
+        /*List<Goods> goodsList = (List)redisUtil.get(RedisContent.GOODS_LIST_KEY );
         if(goodsList == null || goodsList.isEmpty()) {
             goodsList = goodsService.findAll(mid);
             redisUtil.set(RedisContent.GOODS_LIST_KEY, goodsList);
             // 设置key的过期时间
             redisUtil.expire(RedisContent.GOODS_LIST_KEY , 60);
-        }
+        }*/
+
+        List<Goods> goodsList = goodsService.findAll(mid);
 
 
 
@@ -92,7 +95,33 @@ public class showController {
 
     @RequestMapping("goods/findLie")
     public List<Classify> findLie(Integer num){
-            return goodsService.findLie(num);
+
+        List<Classify> list = goodsService.findLie(num);
+        List<Classify> lista = new ArrayList<Classify>();
+
+        for (int i=0; i<list.size(); i++){
+            Classify c = new Classify();
+            String val = list.get(i).getValue();
+            String[] split = val.split("，");
+            c.setId(list.get(i).getId());
+            c.setKey(list.get(i).getKey());
+            c.setValue(list.get(i).getValue());
+            c.setCategoryId(list.get(i).getCategoryId());
+            c.setArr(split);
+            lista.add(c);
+        }
+
+
+
+            return lista;
+    }
+
+
+
+    @RequestMapping("goods/findAie")
+    public List<Goods> findAie(String mid,String lab){
+       List<Goods> goodsList = goodsService.findAie(mid,lab);
+       return goodsList;
     }
 
 

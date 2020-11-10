@@ -37,7 +37,15 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<Classify> findLie(Integer num) {
+
+
+
         return goodsMapper.findLie(num);
+    }
+
+    @Override
+    public List<Goods> findAie(String mid, String lab) {
+        return goodsMapper.findAie(mid,lab);
     }
 
 
