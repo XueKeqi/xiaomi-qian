@@ -1,7 +1,11 @@
 package com.jk.controller;
 
+import com.jk.entity.xmUser;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class IndexController {
@@ -33,6 +37,13 @@ public class IndexController {
     @RequestMapping("/miList")
     public String miList(){
         return "miList";
+    }
+    //跳转到订单页面
+    @RequestMapping("/tooOrder")
+    public String tooOrder(Model model, HttpSession session){
+        String id=session.getId();
+        model.addAttribute("userId","id");
+        return "userOrder";
     }
 
 }
