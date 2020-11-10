@@ -16,7 +16,9 @@
         WHERE c.id = #{num}
     </select>
 
-
+    <select id="findProductById" resultType="Product" parameterType="Integer">
+        select * from goods_spu where id=#{id}
+    </select>
 
 
 

@@ -1,9 +1,6 @@
 package com.jk.service;
 
-import com.jk.entity.Carouse;
-import com.jk.entity.Goods;
-import com.jk.entity.MiaoshaGoods;
-import com.jk.entity.Picture;
+import com.jk.entity.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,5 +24,6 @@ public interface GoodsService {
     @RequestMapping("goods/findCarouse")
     public List<Carouse> findCarouse();
 
-
+    @RequestMapping("goods/findProductById")
+    Product findProductById(@RequestParam Integer id);
 }

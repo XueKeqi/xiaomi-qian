@@ -2,7 +2,6 @@ server:
   port: 8080
 
 spring:
-
   freemarker:
     check-template-location: true
     template-loader-path: classpath:/templates/
@@ -13,28 +12,11 @@ spring:
     expose-session-attributes: true
     request-context-attribute: request
     suffix: .ftl
-
-
   application:
     name: web
-
-  mvc:
-    hiddenmethod:
-      filter:
-        enabled: false
-
   thymeleaf:
     cache: false
     mode: LEGACYHTML5
-
-
-
-
-feign:
-  hystrix:
-    enabled: false
-
-
 eureka:
   client:
     service-url:

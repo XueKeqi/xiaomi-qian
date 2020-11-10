@@ -1,9 +1,6 @@
 package com.jk.controller;
 
-import com.jk.entity.Carouse;
-import com.jk.entity.Goods;
-import com.jk.entity.MiaoshaGoods;
-import com.jk.entity.Picture;
+import com.jk.entity.*;
 import com.jk.service.GoodsService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +36,10 @@ public class goodsController {
     }
 
 
+    @RequestMapping("goods/findProductById")
+    Product findProductById(@RequestParam Integer id){
+        return goodsService.findProductById(id);
+    };
 
 
 

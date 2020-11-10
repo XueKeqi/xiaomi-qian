@@ -748,12 +748,12 @@
                     var price=data[i].price;
                     var images = data[i].images;
                     if(cid == 1){
-                        str+="<li><a href=\'#\'>";
+                        str+="<li><a href='../product/detail?id="+id+"'>";
                         str+="<div class=\'shop-content-li\'>";
                         str+='<img src="'+images+'" alt="">';
                         str+="<h3 class=\'ellipse\'>"+title+"</h3>";
                         str+="<p class=\'ellipse\'>"+detail+"</p>";
-                        str+="<p class=\'price\'><span>"+price+"</span></p>";
+                        str+="<p class=\'price\'><span>"+price+"元起</span></p>";
                         str+="</div>";
                         str+="</a>";
                         str+="</li>";
@@ -762,7 +762,7 @@
                     }
                 }
             },error:function(data){
-                alert(系统错误);
+                alert("系统错误");
             }
         });
     }
@@ -799,7 +799,7 @@
                     if(a<=7){
 
                         str+='<li>';
-                        str+='<a href="#">';
+                        str+='<a href="../product/detail?id='+id+'">';
                         str+='<div class="shop-img">';
                         str+='<img src="'+img+'" alt="">';
                         str+='</div>';
@@ -890,7 +890,7 @@
                     $("#lunbo").html(str);
                 }
             },error:function(data){
-                alert(系统错误);
+                alert("系统错误");
             }
         });
     }
@@ -917,7 +917,7 @@
                     $("#sss").html(str);
                 }
             },error:function(data){
-                alert(系统错误);
+                alert("系统错误");
             }
         });
     }
@@ -981,16 +981,14 @@ function flefta(mid){
 
                 var title=data[i].title;
                 var images = data[i].images;
-
-
-                str+='<li><a href="#"><img class="aaimg" src="'+images+'" ><div id="qwea">'+title+'</div></a></li>';
-
-
+                str+='<li><a href="../product/detail?id='+data[i].id+'">';
+                str+='<img class="aaimg" src="'+images+'" >';
+                str+='<div id="qwea">'+title+'</div></a></li>';
                 $("#aaa").html(str);
 
             }
         },error:function(data){
-            alert(系统错误);
+            alert("系统错误");
         }
     });
 

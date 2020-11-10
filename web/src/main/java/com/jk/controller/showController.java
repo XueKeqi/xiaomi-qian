@@ -6,10 +6,11 @@ import com.jk.service.GoodsService;
 import com.jk.service.UserService;
 import com.jk.utils.RedisUtil;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@Controller
 public class showController {
 
     @Resource
@@ -32,10 +33,26 @@ public class showController {
     @Resource
     private RedisUtil redisUtil;
 
-
+    /**
+     * 商品详情
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping("product/detail")
+    public String detail(Integer id,Model m){
+        //产品系列信息：比如 小米 10、Redmi P30
+        Product product=goodsService.findProductById(id);
+        System.out.println(product);
+        //产品系列下的具体商品列表：比如 '小米 10 XX版本 XX颜色'
+        m.addAttribute("product",product);
+        m.addAttribute("id",id);
+        return "detail";
+    }
 
 
     @RequestMapping("goods/findAll")
+    @ResponseBody
     public List<Goods> findAll(String mid){
         List<Goods> goodsList = (List)redisUtil.get(RedisContent.GOODS_LIST_KEY );
         if(goodsList == null || goodsList.isEmpty()) {
@@ -51,14 +68,16 @@ public class showController {
 
 
     @RequestMapping("goods/findmiao")
+    @ResponseBody
     public List<MiaoshaGoods> findmiao(Integer num){
         return goodsService.findmiaosha(num);
     }
 
 
 
-        /*轮播图*/
-        @RequestMapping("pictur/findLun")
+    /*轮播图*/
+    @RequestMapping("pictur/findLun")
+    @ResponseBody
     public Map<String, Object> findLun(Integer id){
         List<Picture> list = goodsService.findLun(id);
         System.out.print(list);
@@ -67,8 +86,8 @@ public class showController {
         return map;
     }
 
-
     @RequestMapping("user/toLogin")
+    @ResponseBody
     public String toLogin(xmUser user,HttpSession session){
         xmUser user2 =userService.toLogin(user);
         if(user2==null){
@@ -83,6 +102,7 @@ public class showController {
 
 
     @RequestMapping("findCarouse")
+    @ResponseBody
     public List<Carouse> findCarouse(){
         return goodsService.findCarouse();
     }
