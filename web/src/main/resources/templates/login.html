@@ -410,7 +410,7 @@
       </div>
       <!-- tab e -->
       <!-- tab con s -->
-      <div class="tabs-con tabs_con now" data-con="pwd">
+      <div class="tabs-con tabs_con now" data-con="pwd" id="code">
        <div>
         <div class="login_area" id="login-main-form">
          <div class="loginbox c_b">
@@ -465,7 +465,7 @@
            <span id="custom_display_8" class="sns-default-container sns_default_container" style="display: none;"> </span>
           </div>
           <div class="other_panel clearfix">
-           <span id="custom_display_256" class="sms_link"> <a href="javascript:;" class="btnadpt btn_gray login_type_link" id="ChangeLoginType">手机短信登录/注册</a> </span>
+           <span id="custom_display_256" class="sms_link"> <a href="javascript:toemail();" class="btnadpt btn_gray login_type_link" id="ChangeLoginType">手机短信登录/注册</a> </span>
            <div class="reverse" id="extra-links">
             <!--     <div class="n_links_area reg_forget_links reg-forget-links" id="custom_display_64">
          <a class="outer-link" href="https://account.xiaomi.com/pass/register?callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%253Fclient_id%253D180100041080%26sign%3DOGIxNzgyNjZlM2FlMTM2OWU1ZTJlYmQ4MzU1M2E2YzNlZWQ2Yjg1Nw%2C%2C&amp;sid=mi_eshop&amp;_bannerBiz=mistore&amp;_qrsize=180">立即注册</a>
@@ -477,7 +477,7 @@
             </div>
            </div>
            <!-- 其他登录方式 s -->
-           <div style="display: block;" class="other_login_type sns-login-container" id="custom_display_16">
+           <div style="display: block;" class="other_login_type sns-login-container" >
             <fieldset class="oth_type_tit">
              <legend align="center" class="oth_type_txt">其他方式登录</legend>
             </fieldset>
@@ -495,8 +495,91 @@
         </div>
        </div>
       </div>
-      <div class="tabs-con tabs_con" data-con="qr">
+      <div class="tabs-con tabs_con" data-con="qr" >
+
       </div>
+     </div>
+     <div id="mail" style="display: none">
+      <div class="login_area">
+       <div class="loginbox c_b">
+        <!-- 输入框 -->
+        <div class="lgn_inputbg c_b login-panel pwdLogin sms_login">
+         <!--验证用户名-->
+         <div class="single_imgarea" >
+          <div class="na-img-area"  style="display:none">
+           <div class="na-img-bg-area" ></div>
+          </div>
+          <p class="us_name tac"></p>
+          <p class="us_id tac"></p>
+         </div>
+         <label class="labelbox login_user c_b disable add_regioncode" for="">
+          <div class="turn_area">
+           <a class="btn_turn"  href="javascript:void(0);" title="关闭国家码"></a>
+          </div>
+          <div class="country_list">
+           <div class="animation countrycode_selector" >
+            <span class="country_code"><tt class="countrycode-value" >+86</tt><i class="icon_arrow_down"></i></span>
+           </div>
+          </div> <input class="item_account" autocomplete="off" type="tel"  placeholder="手机号码" _type="tel" id="phoneNUmber"/> <input type="hidden" name="log" id="debug_log" /> </label>
+         <div class="country-container" style="display: none;">
+          <div class="country_container_con" ></div>
+         </div>
+         <div></div>
+         <label class="labelbox pwd_panel c_b"> <input class="item_account" type="number" placeholder="短信验证码" autocomplete="off"  name="password" _type="number" id="verificationCode" /> <input class="item_account" type="text" placeholder="密码" autocomplete="off" id="visiablePwd" name="visiablepwd" style="display:none" />
+          <div class="eye_panel pwd-visiable">
+           <i class="eye pwd-eye">
+            <svg width="20" height="20" viewbox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path class="eye_outer" fill-rule="evenodd" clip-rule="evenodd" d="M30.0001 0C41.9789 0 52.5304 6.3047 58.7068 15.8731C60.3286 18.3856 60.3288 21.6127 58.7072 24.1253C52.5312 33.6948 41.9793 40 30.0001 40C18.021 40 7.46928 33.695 1.29293 24.1263C-0.328972 21.6136 -0.328905 18.3862 1.29305 15.8735C7.46979 6.30466 18.0212 0 30.0001 0ZM29.9634 7C22.791 7 16.9767 12.8203 16.9767 20C16.9767 27.1797 22.791 33 29.9634 33C37.1357 33 42.9501 27.1797 42.9501 20C42.9501 12.8203 37.1357 7 29.9634 7ZM29.9634 11C34.9288 11 38.9541 15.0294 38.9541 20C38.9541 24.9706 34.9288 29 29.9634 29C24.9979 29 20.9726 24.9706 20.9726 20C20.9726 15.0294 24.9979 11 29.9634 11Z"></path>
+            </svg> </i>
+          </div>
+          <div  class="code_panel" style="display: block;">
+           <a class="send_ticket" href="javascript:getCode();" >获取验证码</a>
+          </div> </label>
+        </div>
+        <div class="security_Controller" style="display: none;">
+         <label class="checkbox_area"> <input type="checkbox"  class="checkbox" />使用安全控件</label>
+        </div>
+        <!-- 错误信息 -->
+        <div class="err_tip">
+         <div>
+          <em class="icon_error"></em>
+          <span class="error-con"></span>
+         </div>
+        </div>
+        <div class="btns_bg">
+         <input class="btnadpt"  type="button" value="立即登录/注册" onclick="javascript:tologIn()" />
+         <span  class="sns-default-container sns_default_container" style="display: none;"> </span>
+        </div>
+        <div class="other_panel clearfix">
+         <span  class="sms_link"> <a href="javascript:tocode();" class="btnadpt btn_gray login_type_link">用户名密码登录</a> </span>
+         <div class="reverse extra_links" >
+          <div class="n_links_area reg_forget_links reg-forget-links" id="custom_display_64">
+           <a class="outer-link" href="https://account.xiaomi.com/pass/register?callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%253Fclient_id%253D180100041080%26sign%3DOGIxNzgyNjZlM2FlMTM2OWU1ZTJlYmQ4MzU1M2E2YzNlZWQ2Yjg1Nw%2C%2C&amp;sid=mi_eshop&amp;_bannerBiz=mistore&amp;_qrsize=180">立即注册</a>
+           <span>|</span>
+           <a class="outer-link" href="https://account.xiaomi.com/pass/forgetPassword?callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%253Fclient_id%253D180100041080%26sign%3DOGIxNzgyNjZlM2FlMTM2OWU1ZTJlYmQ4MzU1M2E2YzNlZWQ2Yjg1Nw%2C%2C&amp;sid=mi_eshop&amp;_bannerBiz=mistore&amp;_qrsize=180">忘记密码？</a>
+          </div>
+          <div class="n_links_area sms_unavaliable_links sms-unavaliable-links">
+           <a target="_blank" href="https://account.xiaomi.com/helpcenter/faq/_/02.faqs/05.sms-and-email-verification-code/faq-1">收不到验证码？</a>
+          </div>
+         </div>
+         <!-- 其他登录方式 s -->
+         <div style="display: block;" class="other_login_type sns-login-container" id="custom_display_16">
+          <fieldset class="oth_type_tit">
+           <legend align="center" class="oth_type_txt">其他方式登录</legend>
+          </fieldset>
+          <div class="oth_type_links">
+           <a class="icon_type btn_qq sns-login-link" data-type="qq" href="https://account.xiaomi.com/pass/sns/login/auth?appid=100284651&amp;&amp;callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%253Fclient_id%253D180100041080%26sign%3DOGIxNzgyNjZlM2FlMTM2OWU1ZTJlYmQ4MzU1M2E2YzNlZWQ2Yjg1Nw%2C%2C&amp;sid=mi_eshop" title="QQ登录" target="_blank"><i class="btn_sns_icontype icon_default_qq"></i></a>
+           <a class="icon_type btn_weibo sns-login-link" data-type="weibo" href="https://account.xiaomi.com/pass/sns/login/auth?appid=2996826273&amp;&amp;callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%253Fclient_id%253D180100041080%26sign%3DOGIxNzgyNjZlM2FlMTM2OWU1ZTJlYmQ4MzU1M2E2YzNlZWQ2Yjg1Nw%2C%2C&amp;sid=mi_eshop" title="微博登录" target="_blank"><i class="btn_sns_icontype icon_default_weibo"></i></a>
+           <a class="icon_type btn_alipay sns-login-link" data-type="alipay" href="https://account.xiaomi.com/pass/sns/login/auth?appid=2088011127562160&amp;&amp;callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%253Fclient_id%253D180100041080%26sign%3DOGIxNzgyNjZlM2FlMTM2OWU1ZTJlYmQ4MzU1M2E2YzNlZWQ2Yjg1Nw%2C%2C&amp;sid=mi_eshop" title="支付宝登录" target="_blank"><i class="btn_sns_icontype icon_default_alipay"></i></a>
+           <a class="icon_type btn_weixin sns-login-link" data-type="weixin" href="https://account.xiaomi.com/pass/sns/login/auth?appid=wxxmzh&amp;scope=snsapi_login&amp;callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%253Fclient_id%253D180100041080%26sign%3DOGIxNzgyNjZlM2FlMTM2OWU1ZTJlYmQ4MzU1M2E2YzNlZWQ2Yjg1Nw%2C%2C&amp;sid=mi_eshop" title="微信登录" target="_blank"><i class="btn_sns_icontype icon_default_weixin"></i></a>
+          </div>
+         </div>
+         <!-- 其他登录方式 e -->
+         <p class="acq_tips" style="display: none;"></p>
+        </div>
+       </div>
+      </div>
+     </div>
       <!-- tab con e -->
      </div>
      <div class="ercode_area" id="login-qrcode" style="width: 410px;">
@@ -648,7 +731,42 @@ Sentry.init({
     }
   });
  }
+ function toemail(){
+
+  document.getElementById("code").style.display = "none";
+  document.getElementById("mail").style.display = "";
+ }
+ function tocode(){
+  document.getElementById("mail").style.display = "none";
+  document.getElementById("code").style.display = "";
+ }
+
+ function getCode(){
+  var phoneNUmber = $("#phoneNUmber").val();
+  alert(phoneNUmber);
+  $.ajax({
+   url:"./user/getCode",
+   data:{phoneNUmber:phoneNUmber},
+   success:function(data){
+    alert(data);
+   }
+  })
+ }
+
+ function tologIn(){
+  var phoneNUmber = $("#phoneNUmber").val();
+  var verificationCode = $("#verificationCode").val();
+  $.ajax({
+   url:"./user/logIn",
+   data:{phoneNUmber:phoneNUmber,verificationCode:verificationCode},
+   success:function(data){
+    alert(data);
+    if (data=="登陆成功") {
+     location.href="../index";
+    }
+   }
+  })
+ }
 </script>
 
-</html>
 </html>
