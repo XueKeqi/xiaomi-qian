@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 @EnableFeignClients
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
-public class WebApplication {
+public class  WebApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WebApplication.class, args);
 	}

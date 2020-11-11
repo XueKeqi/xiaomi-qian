@@ -1,0 +1,25 @@
+server:
+  port: 8088
+
+spring:
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+  datasource:
+    url: jdbc:mysql://DESKTOP-QLADQDP:3306/x?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-name: my-application
+      cluster-nodes: localhost:9300
+
+mybatis:
+  mapper-locations: classpath*:mybatis/*Mapper.xml
+  type-aliases-package: com.jk.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true

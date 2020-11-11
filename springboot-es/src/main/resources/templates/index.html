@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ES</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="../jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input name="aaa">
+    <input type="button" value="搜索" onclick="sou()">
+    <br>
+   <!-- <span v-for="value in List">
+            {{ value }}
+    </span>-->
+    <span id="test"></span>
+</div>
+
+<script>
+   var vm = new Vue({
+        el: '#app',
+
+        data: {
+            List: ""
+        }
+    })
+
+
+    function sou(){
+
+        var name = $('input[name="aaa"]').val();
+
+        $.ajax({
+            dataType:"json",
+            type:"POST",
+            url:"../user/findBy",
+            data:{name:name},
+            success:function(result) {
+
+                vm.List = result;
+                var str = "";
+                for (var i=0; i<result.length; i++){
+                        str += result[i].userId
+                        str += result[i].userName
+                        str += result[i].userSex
+                        str += result[i].userPassword
+                        str += result[i].userPhone
+                        str += result[i].userYoux
+                        str += result[i].userImgurl;
+                }
+
+                $('#test').html(str);
+            }
+        });
+
+    }
+
+
+
+</script>
+</body>
+</html>
