@@ -4,6 +4,7 @@ import com.jk.entity.Goods;
 
 import com.jk.entity.MiaoshaGoods;
 import com.jk.entity.Product;
+import com.jk.entity.Specs;
 import org.springframework.stereotype.Repository;
 
 
@@ -16,4 +17,6 @@ public interface GoodsMapper {
     List<MiaoshaGoods> findmiaosha(Integer c);
 
     Product findProductById(Integer id);
+
+    List<Specs> findSpecsList(Integer id);
 }

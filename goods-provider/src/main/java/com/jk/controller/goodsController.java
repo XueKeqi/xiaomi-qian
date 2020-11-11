@@ -42,6 +42,9 @@ public class goodsController {
     };
 
 
-
+    @RequestMapping("goods/findSpecsList")
+    List<Specs> findSpecsList(@RequestParam Integer id){
+        return goodsService.findSpecsList(id);
+    };
 
 }

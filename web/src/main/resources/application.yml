@@ -22,3 +22,16 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+        timeout:
+          enabled: false
+feign:
+  hystrix:
+    enabled: false
+

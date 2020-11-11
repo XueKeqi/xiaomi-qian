@@ -20,6 +20,9 @@
         select * from goods_spu where id=#{id}
     </select>
 
+    <select id="findSpecsList" resultType="Specs" parameterType="Integer">
+        SELECT a.* FROM goods_specs a,goods_spu b where a.goodspu_id=b.id and b.id=#{id};
+    </select>
 
 
 

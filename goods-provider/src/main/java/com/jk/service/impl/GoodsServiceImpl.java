@@ -40,5 +40,10 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.findProductById(id);
     }
 
+    @Override
+    public List<Specs> findSpecsList(Integer id) {
+        return goodsMapper.findSpecsList(id);
+    }
+
 
 }

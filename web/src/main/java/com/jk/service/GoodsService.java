@@ -26,4 +26,7 @@ public interface GoodsService {
 
     @RequestMapping("goods/findProductById")
     Product findProductById(@RequestParam Integer id);
+
+    @RequestMapping("goods/findSpecsList")
+    List<Specs> findSpecsList(@RequestParam Integer id);
 }

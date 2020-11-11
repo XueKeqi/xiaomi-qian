@@ -12,4 +12,6 @@ public interface GoodsService {
     List<MiaoshaGoods> findmiaosha(Integer num);
 
     Product findProductById(Integer id);
+
+    List<Specs> findSpecsList(Integer id);
 }

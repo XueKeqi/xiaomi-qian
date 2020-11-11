@@ -1,10 +1,12 @@
 package com.jk.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.jk.config.RedisContent;
 import com.jk.entity.*;
 import com.jk.service.GoodsService;
 import com.jk.service.UserService;
 import com.jk.utils.RedisUtil;
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,10 +45,11 @@ public class showController {
     public String detail(Integer id,Model m){
         //产品系列信息：比如 小米 10、Redmi P30
         Product product=goodsService.findProductById(id);
-        System.out.println(product);
         //产品系列下的具体商品列表：比如 '小米 10 XX版本 XX颜色'
-        m.addAttribute("product",product);
+        List<Specs> specsList=goodsService.findSpecsList(id);
         m.addAttribute("id",id);
+        m.addAttribute("product",product);
+        m.addAttribute("specsList",specsList);
         return "detail";
     }
 
