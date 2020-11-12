@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="zh-CN" xml:lang="zh-CN">
-
+<html lang="zh-CN" xml:lang="zh-CN"
+            xmlns:th="http://www.thymeleaf.org"
+ >
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="UTF-8" />
@@ -24,7 +25,10 @@
     <meta http-equiv="Cache-Control" content="no-transform " />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    <link href="//s02.mifile.cn/assets/css/user/orderList.0c91c7f7.css" rel="preload" as="style"><link href="//s02.mifile.cn/assets/js/chunk-vendors.50ac3731.js" rel="preload" as="script"><link href="//s02.mifile.cn/assets/js/user/orderList.ecf6e2e6.js" rel="preload" as="script"><link href="//s02.mifile.cn/assets/css/user/orderList.0c91c7f7.css" rel="stylesheet"></head>
+    <link href="//s02.mifile.cn/assets/css/user/orderList.0c91c7f7.css" rel="preload" as="style"><link href="//s02.mifile.cn/assets/js/chunk-vendors.50ac3731.js" rel="preload" as="script"><link href="//s02.mifile.cn/assets/js/user/orderList.ecf6e2e6.js" rel="preload" as="script"><link href="//s02.mifile.cn/assets/css/user/orderList.0c91c7f7.css" rel="stylesheet">
+
+
+</head>
 <body>
 <div id="app">
 
@@ -2187,7 +2191,7 @@
                         <div class="menu-box">
                             <h3 class="title">订单中心</h3>
                             <ul class="list">
-                                <li><a href="//www.mi.com/user/orderList/">我的订单</a></li>
+                                <li><a onclick="queryOrder()">我的订单</a></li>
                                 <li ><a href="//www.mi.com/user/comment?filter=1&r=1604920924"   data-name="bracket" id="J_comment">评价晒单</a></li>
                                 <li><a href="//recharge.10046.mi.com/list">话费充值订单</a></li>
                                 <li><a href="//huanxin.mi.com/order/list?r=">以旧换新订单</a></li>
@@ -2227,12 +2231,23 @@
                     </div>
 
                 </div>
-                <div class="span16">
+               <!-- <div class="span16">
                     <order-main></order-main>
+                </div>-->
+                <div>
+                    <table class="table" id="myTable"></table>
+                    <a href="/https://wxf7758.oss-cn-beijing.aliyuncs.com/0.jpg"></a>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
 
 
     <div ref="J_siteFooter">
@@ -2415,8 +2430,47 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
-
 </script>
 </body>
+
+
+<link rel="stylesheet" href="../css/bootstarp/bootstrap-table.css">
+<script src="../jquery-3.2.1.min.js"></script>
+<script src="../css/bootstarp/bootstrap-table.js"></script>
+<script src="../css/bootstarp/bootstrap-table-zh-CN.js"></script>
+
+<script th:inline="javascript">
+
+   function queryOrder(){
+      var userOrder=[[${userOrder}]]
+       alert(userOrder.userId);
+
+
+    /* $("#myTable").bootstrapTable({
+         url:"",
+         toolbar:'#toolbar',
+         pagination:true,
+         pageList:[3,6,9],
+         pageNumber:1,
+         pageSize:3,
+         sidePagination:'server',
+         showRefresh:true,
+         columns:[
+                 {checkbox:true},
+                 {field:"",title:"",align:"center",width:80},
+                 {field:"",title:"",align:"center",width:80},
+                 {field:"",title:"",align:"center",width:80},
+                 {field:"",title:"",align:"center",width:80},
+                 {field:"",title:"",align:"center",width:80},
+                 {field:"",title:"",align:"center",width:80}
+
+                 ]
+
+     })*/
+
+    }
+
+   queryOrder();
+</script>
 
 </html>

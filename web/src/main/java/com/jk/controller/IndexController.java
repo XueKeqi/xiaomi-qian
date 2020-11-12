@@ -41,8 +41,8 @@ public class IndexController {
     //跳转到订单页面
     @RequestMapping("/tooOrder")
     public String tooOrder(Model model, HttpSession session){
-        String id=session.getId();
-        model.addAttribute("userId","id");
+       xmUser user= (xmUser) session.getAttribute("user");
+        model.addAttribute("userOrder",user);
         return "userOrder";
     }
 
