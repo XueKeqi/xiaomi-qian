@@ -1,6 +1,7 @@
 package com.jk.service;
 
 import com.jk.entity.*;
+import com.jk.pojo.EsGoods;
 
 import java.util.List;
 

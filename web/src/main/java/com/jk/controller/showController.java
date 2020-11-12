@@ -53,6 +53,20 @@ public class showController {
         return goodsList;
     }
 
+    @RequestMapping("goods/findAlla")
+    public List<Goods> findAlla(String mid){
+
+        List<Goods> goodsList = (List)redisUtil.get(RedisContent.GOODS_LIST_KEY+"_"+mid );
+        if(goodsList == null || goodsList.isEmpty()) {
+            goodsList = goodsService.findAll(mid);
+            redisUtil.set(RedisContent.GOODS_LIST_KEY+"_"+mid, goodsList);
+            // 设置key的过期时间
+            redisUtil.expire(RedisContent.GOODS_LIST_KEY+"_"+mid , 60);
+        }
+
+        return goodsList;
+    }
+
 
 
     @RequestMapping("goods/findmiao")
@@ -62,8 +76,8 @@ public class showController {
 
 
 
-        /*轮播图*/
-        @RequestMapping("pictur/findLun")
+    /*轮播图*/
+    @RequestMapping("pictur/findLun")
     public Map<String, Object> findLun(Integer id){
         List<Picture> list = goodsService.findLun(id);
         System.out.print(list);

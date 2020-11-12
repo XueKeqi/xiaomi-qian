@@ -830,8 +830,7 @@
                     }
                     $("#ula_list").html(str);
                     }
-                    repend("<dl style='background-color:pink;'><dt>"+content+"</dt><dd>回复者："+name+"</dd><dd>回复时间："+time+"</dd></dl>");
-                }
+            }
 
         });
     }
@@ -905,8 +904,7 @@
                 for(var i=0;i<arr.length;i++){
                     a++;
                     var url=arr[i].url;
-
-                        str+='<img src="'+url+'"/>';
+                    str+='<img src="'+url+'"/>';
 
                     $("#sss").html(str);
                 }
@@ -943,7 +941,7 @@ function flefta(mid){
     $.ajax({
         dataType:"json",
         type:"POST",
-        url:"../goods/findAll",
+        url:"../goods/findAlla",
         data:{mid:mid},
         success:function(data){
            // var arr=data.replies;

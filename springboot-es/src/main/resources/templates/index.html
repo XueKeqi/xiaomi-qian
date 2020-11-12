@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <title>ES</title>
+    <link rel="stylesheet" href="../jquery-ui-1.12.1.custom/jquery-ui.css">
     <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
     <script src="../jquery-1.9.1.min.js"></script>
+
 </head>
 <body>
 <div id="app">
@@ -15,6 +17,13 @@
             {{ value }}
     </span>-->
     <span id="test"></span>
+
+
+
+
+    <input type="text" id="autocomp" />
+
+
 </div>
 
 <script>
@@ -55,6 +64,47 @@
         });
 
     }
+
+
+
+   $("#autocomp").autocomplete({
+       source: "remote.ashx",
+       minLength: 2
+   });
+
+
+
+   // 本地字符串数组
+   var availableTags = [
+       "C#",
+       "C++",
+       "Java",
+       "JavaScript",
+       "ASP",
+       "ASP.NET",
+       "JSP",
+       "PHP",
+       "Python",
+       "Ruby"
+   ];
+   $("#local1").autocomplete({
+       source: availableTags
+   });
+   // 本地json数组
+   var availableTagsJSON = [
+       { label: "C# Language", value: "C#" },
+       { label: "C++ Language", value: "C++" },
+       { label: "Java Language", value: "Java" },
+       { label: "JavaScript Language", value: "JavaScript" },
+       { label: "ASP.NET", value: "ASP.NET" },
+       { label: "JSP", value: "JSP" },
+       { label: "PHP", value: "PHP" },
+       { label: "Python", value: "Python" },
+       { label: "Ruby", value: "Ruby" }
+   ];
+   $("#local2").autocomplete({
+       source: availableTagsJSON
+   });
 
 
 

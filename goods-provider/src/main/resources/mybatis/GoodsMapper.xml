@@ -28,6 +28,13 @@
     </select>
 
 
+    <select id="findAlls" resultType="com.jk.pojo.EsGoods">
+
+        select a.id,a.title,b.`name` types from goods_spu a LEFT join goods_category b on a.category_id = b.id
+
+    </select>
+
+
 
 
 

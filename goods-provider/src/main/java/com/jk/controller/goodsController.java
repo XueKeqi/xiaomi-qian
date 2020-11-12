@@ -16,9 +16,6 @@ public class goodsController {
     @Resource
     private GoodsService goodsService;
 
-
-
-
     @RequestMapping("goods/findAll")
     public List<Goods> findAll(@RequestParam String mid){
         return goodsService.findAll(mid);
@@ -29,13 +26,10 @@ public class goodsController {
         return goodsService.findCarouse();
     }
 
-
     @RequestMapping("miaosha/findmiaosha")
     public List<MiaoshaGoods> findmiaosha(@RequestParam Integer num){
         return goodsService.findmiaosha(num);
     }
-
-
 
     @RequestMapping("goods/findLie")
     List<Classify> findLie(@RequestParam Integer num){
@@ -46,7 +40,6 @@ public class goodsController {
     List<Goods> findAie(@RequestParam String mid, @RequestParam String lab){
         return goodsService.findAie(mid,lab);
     }
-
 
 
 }
