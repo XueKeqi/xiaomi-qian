@@ -26,4 +26,11 @@ public interface GoodsService {
 
     @RequestMapping("goods/findLie")
     List<Classify> findLie(@RequestParam Integer num);
+
+    @RequestMapping("goods/findAie")
+    List<Goods> findAie(@RequestParam String mid, @RequestParam String lab);
+
+
+    @RequestMapping("goods/findByName")
+    List<Goods> findByName(@RequestParam String name);
 }

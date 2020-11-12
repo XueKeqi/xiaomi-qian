@@ -1,6 +1,7 @@
 package com.jk.service;
 
 import com.jk.entity.*;
+import com.jk.pojo.EsGoods;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface GoodsService {
     List<MiaoshaGoods> findmiaosha(Integer num);
 
     List<Classify> findLie(Integer num);
+
+    List<Goods> findAie(String mid, String lab);
 }

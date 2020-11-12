@@ -3,15 +3,16 @@ package com.jk.service.impl;
 import com.jk.dao.CarouseMapper;
 import com.jk.dao.GoodsMapper;
 import com.jk.entity.*;
+import com.jk.pojo.EsGoods;
 import com.jk.service.GoodsService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {
+
 
     @Resource
     private GoodsMapper goodsMapper;
@@ -37,7 +38,15 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<Classify> findLie(Integer num) {
+
+
+
         return goodsMapper.findLie(num);
+    }
+
+    @Override
+    public List<Goods> findAie(String mid, String lab) {
+        return goodsMapper.findAie(mid,lab);
     }
 
 
