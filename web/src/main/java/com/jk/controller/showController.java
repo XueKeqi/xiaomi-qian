@@ -9,6 +9,7 @@ import com.jk.utils.CheckSumBuilder;
 import com.jk.utils.HttpClientUtil;
 import com.jk.utils.RedisUtil;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -83,7 +84,7 @@ public class showController {
         if(!user2.getUserPassword().equals(user.getUserPassword())){
             return "密码不正确";
         }
-
+        session.setAttribute("user",user2);
         return "登录成功";
     }
 
