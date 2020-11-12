@@ -104,11 +104,12 @@ public class PayController {
             System.out.println("支付宝交易号="+trade_no);
             System.out.println("付款金额="+total_amount);
 
+
             //支付成功，修复支付状态
 //            payService.updateById(Integer.valueOf(out_trade_no));
             return "index";//跳转付款成功页面
         }else{
-            return "no";//跳转付款失败页面
+            return null;//跳转付款失败页面
         }
 
     }
