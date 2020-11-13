@@ -49,5 +49,22 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.findAie(mid,lab);
     }
 
+    @Override
+
+    public Specs queryGoodsbyIdCart(Integer goodsId) {
+        return goodsMapper.queryGoodsbyIdCart(goodsId);
+    }
+
+
+    @Override
+
+    public Product findProductById(Integer id) {
+        return goodsMapper.findProductById(id);
+    }
+
+    @Override
+    public List<Specs> findSpecsList(Integer id) {
+        return goodsMapper.findSpecsList(id);
+    }
 
 }

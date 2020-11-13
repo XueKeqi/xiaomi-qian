@@ -33,8 +33,18 @@
         select a.id,a.title,b.`name` types from goods_spu a LEFT join goods_category b on a.category_id = b.id
 
     </select>
+    <select id="queryGoodsbyIdCart" parameterType="int" resultType="com.jk.entity.Specs">
+      select * from goods_spu s left join goods_specs p on s.id=p.goodspu_id where p.goodspu_id=#{goodsId}
+	</select>
 
 
+    <select id="findProductById" resultType="Product" parameterType="Integer">
+        select * from goods_spu where id=#{id}
+    </select>
+
+    <select id="findSpecsList" resultType="Specs" parameterType="Integer">
+        SELECT a.* FROM goods_specs a,goods_spu b where a.goodspu_id=b.id and b.id=#{id};
+    </select>
 
 
 

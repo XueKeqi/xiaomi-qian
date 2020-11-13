@@ -19,10 +19,6 @@
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
     </properties>
 
-
-
-
-
     <dependencies>
 
 
@@ -121,6 +117,12 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-elasticsearch</artifactId>
             <version>3.2.0.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
             <scope>compile</scope>
         </dependency>
 

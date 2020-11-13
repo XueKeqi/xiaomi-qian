@@ -1,35 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>详情页面</title>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/index.js"></script>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/detail.css">
     <script src="../jquery-1.9.1.min.js"></script>
+    <script src="/vue.min.js"></script>
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../datatable/datatable/datatables.min.css">
+    <link rel="stylesheet" href="../fileinput/css/fileinput.min.css">
+    <link rel="stylesheet" href="../datatime/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../datatable/datatable/DataTables-1.10.18/css/dataTables.bootstrap.min.css">
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../datatable/datatable/datatables.min.js"></script>
+    <script src="../bootbox/bootbox.min.js"></script>
+    <script src="../datatime/bootstrap-datetimepicker.min.js"></script>
+    <script src="../fileinput/js/fileinput.min.js"></script>
+    <script src="../fileinput/js/locales/zh.js"></script>
+    <script src="../datatime/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../datatable/datatable/DataTables-1.10.18/js/dataTables.bootstrap.min.js"></script>
+    <script src="../js/dateFormat.js"></script>
     <style type="text/css">
-        *{margin:0;padding:0;}#banner{margin:40px auto;width:1226px;height:460px;background-color:#ff6700;position:relative;}.item{display:none;list-style:none;}
-
-
-
+        *{margin:0;padding:0;}
+        #banner{margin:40px auto;width:1226px;height:460px;background-color:#ff6700;position:relative;}
+        .item{display:none;list-style:none;}
         .nav a{
             display: inline-block;
             height: 100%;
             color: #B0B0B0;
             line-height: 40px;
         }
-
-
-
-
         .nav a:hover {
             color:#B0B0B0;
         }
-
-
-
     </style>
 
 </head>
@@ -69,8 +78,17 @@
         </div>
         <div class="nav-right">
             <ul>
-                <li><a href="./login">${user.userName}登录</a><span>|</span></li>
-                <li><a href="#">注册</a><span>|</span></li>
+                <li>
+                    <div id="app">
+                        <div v-if="user === '' ">
+                            <a href="./login">登录</a> <span>|</span> <a href="#">注册</a><span>|</span>
+                        </div>
+                        <div v-else>
+                            <a href="./geren" ><span v-model="user.userName"> <input v-model="user.userName" /></span>  </a><span>|</span>
+                            <a href="javaScript:zhuxiao()">注销</a><span>|</span>
+                        </div>
+                    </div>
+                </li>
                 <li><a href="#">消息通知</a></li>
             </ul>
         </div>
@@ -87,8 +105,8 @@
         <div class="logo-box">
             <a href="index">
                 <div class="logo">
-                    <img src="./images/mi-home.png" alt="MI">
-                    <img src="./images/mi-logo.png" alt="MI">
+                    <img src="../images/mi-home.png" alt="MI">
+                    <img src="../images/mi-logo.png" alt="MI">
                 </div>
             </a>
         </div>
@@ -122,23 +140,203 @@
 </div>
 
 
-
-
-
-
-<div style="background-color:#f5f5f5;height: 700px;width: 1226px;margin: 30px auto;position: relative">
-    <div style="width: 560px;height: 560px;background-color: #4cae4c;float: left"></div>
-    <div style="width: 666px;height: 700px;background-color: #5bc0de;float: right"></div>
+<div class="mi-detail" style="height:1700px;">
+    <div data-v-70283663="" class="product-box container">
+        <div data-v-70283663="" class="img-left">
+            <div data-v-7121d496="" data-v-70283663="" class="product-imglist J_imgListBox">
+                <div data-v-7121d496="" class="img-box J_imgList">
+                    <div data-v-7121d496=""
+                         class="swiper-container J_slider_imglist swiper-container-fade swiper-container-initialized swiper-container-horizontal">
+                        <div data-v-7121d496="" class="swiper-wrapper clearfix"
+                             style="transition-duration: 0ms;">
+                            <div data-v-7121d496=""
+                                 class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+                                 data-swiper-slide-index="4"
+                                 style="width: 561px; transition-duration: 0ms; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                                <img data-v-7121d496="" th:src="@{('.'+${product.images})}"></div>
+                            <div data-v-7121d496="" class="swiper-slide swiper-slide-duplicate-next"
+                                 data-swiper-slide-index="0"
+                                 style="width: 561px; transition-duration: 0ms; opacity: 1; transform: translate3d(-561px, 0px, 0px);">
+                                <img data-v-7121d496="" th:src="@{('.'+${product.images})}">
+                            </div>
+                            <div data-v-7121d496="" class="swiper-slide" data-swiper-slide-index="1"
+                                 style="width: 561px; transition-duration: 0ms; opacity: 1; transform: translate3d(-1122px, 0px, 0px);">
+                                <img data-v-7121d496="" th:src="@{('.'+${product.images})}">
+                            </div>
+                            <div data-v-7121d496="" class="swiper-slide" data-swiper-slide-index="2"
+                                 style="width: 561px; transition-duration: 0ms; opacity: 1; transform: translate3d(-1683px, 0px, 0px);">
+                                <img data-v-7121d496="" th:src="@{('.'+${product.images})}">
+                            </div>
+                            <div data-v-7121d496="" class="swiper-slide swiper-slide-prev"
+                                 data-swiper-slide-index="3"
+                                 style="width: 561px; transition-duration: 0ms; opacity: 1; transform: translate3d(-2244px, 0px, 0px);">
+                                <img data-v-7121d496="" th:src="@{('.'+${product.images})}">
+                            </div>
+                            <div data-v-7121d496="" class="swiper-slide swiper-slide-active"
+                                 data-swiper-slide-index="4"
+                                 style="width: 561px; transition-duration: 0ms; opacity: 1; transform: translate3d(-2805px, 0px, 0px);">
+                                <img data-v-7121d496="" th:src="@{('.'+${product.images})}">
+                            </div>
+                            <div data-v-7121d496=""
+                                 class="swiper-slide swiper-slide-duplicate swiper-slide-next"
+                                 data-swiper-slide-index="0"
+                                 style="width: 561px; transition-duration: 0ms; opacity: 0; transform: translate3d(-3366px, 0px, 0px);">
+                                <img data-v-7121d496="" th:src="@{('.'+${product.images})}">
+                            </div>
+                        </div>
+                        <div data-v-7121d496=""
+                             class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                                        <span class="swiper-pagination-bullet" tabindex="0" role="button"
+                                              aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet"
+                                                                                      tabindex="0" role="button"
+                                                                                      aria-label="Go to slide 2"></span><span
+                                class="swiper-pagination-bullet" tabindex="0" role="button"
+                                aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet"
+                                                                        tabindex="0" role="button"
+                                                                        aria-label="Go to slide 4"></span><span
+                                class="swiper-pagination-bullet swiper-pagination-bullet-active"
+                                tabindex="0" role="button" aria-label="Go to slide 5"></span></div>
+                        <div data-v-7121d496="" class="swiper-button-next" tabindex="0" role="button"
+                             aria-label="Next slide"></div>
+                        <div data-v-7121d496="" class="swiper-button-prev" tabindex="0" role="button"
+                             aria-label="Previous slide"></div>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-v-70283663="" class="product-con" style="height:1200px;">
+            <h2 data-v-70283663="">
+                <img data-v-70283663=""
+                     src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5140715760aa69c857147650cd40c33a.jpg">
+                <span th:text="${product.title}"></span>
+            </h2>
+            <p data-v-70283663="" class="sale-desc" style="text-align:left;">
+                <font color="#ff4a00" th:text="${product.subtitle}"></font>
+                <font th:text="${product.detail}"></font>
+            </p>
+            <p data-v-70283663="" class="company-info" style="text-align:left;">小米自营</p>
+            <div data-v-70283663="" class="price-info"><span data-v-70283663="">3499 元<!----><del data-v-70283663="">3999 元</del></span></div>
+            <div data-v-70283663="" class="line"></div>
+            <div data-v-70283663="" class="address-box">
+                <div data-v-49bd293c="" data-v-70283663="" class="product-address">
+                    <i data-v-49bd293c="" class="iconfont iconfont-location"></i>
+                    <div data-v-49bd293c="" class="address-con">
+                        <div data-v-49bd293c="">
+                            <div data-v-49bd293c="" class="address-info">
+                                <span data-v-49bd293c="">北京</span>
+                                <span data-v-49bd293c="">北京市</span>
+                                <span data-v-49bd293c="">海淀区</span>
+                                <span data-v-49bd293c="">清河街道</span>
+                            </div>
+                            <a data-v-49bd293c="" href="javascript:void(0);" class="edit">修改</a></div>
+                        <div data-v-49bd293c="" class="info"><!---->
+                            <div data-v-49bd293c="" class="desc"><span data-v-49bd293c="">该地区暂时缺货</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-v-6009d2b8="" data-v-70283663="" class="buy-option">
+                <div data-v-6009d2b8="" class="buy-box-child">
+                    <div data-v-6009d2b8="" class="option-box">
+                        <div data-v-6009d2b8="" class="title">选择商品</div>
+                        <ul data-v-6009d2b8="" class="clearfix">
+                            <li data-v-6009d2b8=""  th:each="s : ${specsList}">
+                                <input type="hidden" id="${s.id}"/>
+                                <a data-v-6009d2b8="" stat_exposure="true" th:text="${s.productSpecs}" th:onclick="'javascript:alert(\''+${s.id}+'\');'" ></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div data-v-acfb37e4="" data-v-70283663="" class="selected-list">
+                <ul data-v-acfb37e4="">
+                    <li data-v-acfb37e4="">
+                        选中的商品名
+                        <span data-v-acfb37e4="">商品价格<del data-v-acfb37e4="">原价</del></span>
+                    </li>
+                </ul>
+                <div data-v-acfb37e4="" class="total-price">总计：XXXX元</div>
+            </div>
+            <div data-v-70283663="" class="btn-box">
+                <div data-v-381dda6a="" data-v-70283663="" class="sale-btn">
+                    <a data-v-381dda6a="" class="btn btn-line-primary" th:onclick="'javascript:addCart(\''+${product.id}+'\');'">加入购物车</a>
+                </div>
+                <div data-v-5d5a0502="" data-v-70283663="" class="favorite-btn">
+                    <a data-v-5d5a0502="" class="btn-gray btn-like">
+                        <i data-v-5d5a0502="" class="iconfont default"></i>
+                        喜欢
+                    </a>
+                </div>
+            </div>
+            <div data-v-6d9966ee="" data-v-70283663="" class="after-sale-info">
+                <span data-v-6d9966ee="">
+                    <a data-v-6d9966ee="" href="javascript:void(0);" class="support" stat_exposure="true">
+                        <i data-v-6d9966ee="" class="iconfont"></i>
+                        <em data-v-6d9966ee="">小米自营</em>
+                    </a>
+                </span>
+                <span data-v-6d9966ee="">
+                    <a data-v-6d9966ee="" href="javascript:void(0);" title="由小米发货" class="support" stat_exposure="true">
+                        <i data-v-6d9966ee="" class="iconfont"></i>
+                        <em data-v-6d9966ee="">小米发货</em>
+                    </a>
+                </span>
+                <span data-v-6d9966ee="">
+                    <a data-v-6d9966ee="" href="javascript:void(0);" class="support" stat_exposure="true">
+                        <i data-v-6d9966ee="" class="iconfont"></i>
+                        <em data-v-6d9966ee="">7天无理由退货</em>
+                    </a>
+                </span>
+                <span data-v-6d9966ee="">
+                    <a data-v-6d9966ee="" href="javascript:void(0);" title="由小米发货商品(不含有品),单笔满99元免运费;由小米有品发货的商品,免运费;由第三方商家发货的商品，运费以实际结算金额为准;特殊商品需要单独收取运费,具体以实际结算金额为准;优惠券等不能抵扣运费金额;如需无理由退货,用户将承担该商品的退货物流费用;" class="support" stat_exposure="true">
+                        <i data-v-6d9966ee="" class="iconfont"></i>
+                        <em data-v-6d9966ee="">运费说明</em>
+                    </a>
+                </span>
+                <span data-v-6d9966ee="">
+                    <a data-v-6d9966ee="" href="javascript:void(0);" title="" class="support" stat_exposure="true">
+                        <i data-v-6d9966ee="" class="iconfont"></i>
+                        <em data-v-6d9966ee="">企业信息</em>
+                    </a>
+                </span>
+                <span data-v-6d9966ee="">
+                    <a data-v-6d9966ee="" href="#" target="_blank"
+                       class="support" stat_exposure="true">
+                        <i data-v-6d9966ee="" class="iconfont"></i>
+                        <em data-v-6d9966ee="">7天价格保护</em>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div><!---->
+    <div data-v-eb8da102="" data-v-70283663="" class="product-detail page-main"><!---->
+        <div data-v-eb8da102="" class="detail-box">
+            <div data-v-eb8da102="" class="detail-item">
+                <div data-v-eb8da102="" class="section">
+                    <div data-v-eb8da102="" class="section-plain_view">
+                        <div data-v-eb8da102="" class="title container">
+                            <h3 data-v-eb8da102="">官方微信</h3>
+                        </div>
+                        <div data-v-eb8da102="" class="img-box" style="height: 160px;">
+                            <img data-v-eb8da102="" data-src="//i8.mifile.cn/b2c-mimall-media/1a84b2b629512205bf528aae91361efb.jpg" src="//i8.mifile.cn/b2c-mimall-media/1a84b2b629512205bf528aae91361efb.jpg" lazy="loaded">
+                        </div>
+                    </div>
+                </div>
+                <div data-v-eb8da102="" class="section">
+                    <div data-v-eb8da102="" class="section-plain_view">
+                        <div data-v-eb8da102="" class="title container"><h3 data-v-eb8da102="">价格说明</h3><!----></div>
+                        <div data-v-eb8da102="" class="img-box" style="height: 189px;">
+                            <img data-v-eb8da102=""
+                                 data-src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/a482afa34053b1b32ece1023475af7fb.jpeg"
+                                 src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/a482afa34053b1b32ece1023475af7fb.jpeg"
+                                 lazy="loaded"></div>
+                    </div></div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
-
-
-
-
-
-
 <div class="footer">
     <div class="container">
         <ul class="footer-li clearfix">
@@ -200,14 +398,14 @@
                 <div class="about-bt">
                     <div class="about-bt-img">
                         <a href="#">
-                            <img src="./images/wb.png" alt="">
-                            <img src="./images/wb@2x.png" alt="">
+                            <img src="../images/wb.png" alt="">
+                            <img src="../images/wb@2x.png" alt="">
                         </a>
                     </div>
                     <div class="about-bt-img">
                         <a href="#">
-                            <img src="./images/wx.png" alt="">
-                            <img src="./images/wx@2x.png" alt="">
+                            <img src="../images/wx.png" alt="">
+                            <img src="../images/wx@2x.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -218,7 +416,7 @@
 <div class="footer2">
     <div class="container clearfix">
         <div class="footer2-left">
-            <img src="./images/logo-footer.png" alt="">
+            <img src="../images/logo-footer.png" alt="">
         </div>
         <div class="footer2-right">
             <div class="footer2-list">
@@ -248,6 +446,80 @@
 </div>
 </body>
 <script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            user: "",
 
+        }
+    })
+
+    window.onload = function(){
+        $(function () {
+            findSession();
+        });
+    };
+
+
+
+    /*
+ * 判断用户是否登录
+ * */
+    function findSession(){
+        $.ajax({
+            url:"../user/findSession",
+            type:"post",
+            dataType:"json",
+            success:function (data) {
+                vm.user=(data);
+                alert(vm.user.userName);
+                var str=vm.user.userName;
+                //document.getElementById("name").innerHtml="段落已修改";
+                $("#name").html("内容"+str);
+            }
+        })
+    }
+
+    // function addCart(goodsId){
+    //     alert(goodsId);
+    //     $.ajax({
+    //         url:"../cart/addCart",
+    //         type:"post",
+    //         dataType:"json",
+    //         data:{goodspuId:goodsId},
+    //         success:function () {
+    //             console.log("tianjia")
+    //         }
+    //     })
+    // }
+
+    function addCart(goodsId) {
+        alert(goodsId);
+        bootbox.prompt({
+            title:"请选择数量",
+            inputType:"number",
+            size:"small",
+            value:1,
+            callback:function(result){
+                if (result!=null){
+                    if (result>0){
+                        $.ajax({
+                            url:"../cart/addCart",
+                            type:"post",
+                            data:{
+                                goodspuId:goodsId,
+                                nums:result
+                            },
+                            success:function(){
+
+                            }
+                        })
+                    } else {
+                        alert("商品数量必须大于0");
+                    }
+                }
+            }
+        })
+    }
 </script>
 </html>
