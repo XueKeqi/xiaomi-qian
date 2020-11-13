@@ -40,7 +40,6 @@ public class showController {
 
 
 
-
     @RequestMapping("goods/findAll")
     public List<Goods> findAll(String mid){
         /*List<Goods> goodsList = (List)redisUtil.get(RedisContent.GOODS_LIST_KEY );
@@ -104,6 +103,14 @@ public class showController {
         session.setAttribute("user",user2);
         return "登录成功";
     }
+    @RequestMapping("user/findSession")
+    @ResponseBody
+    public xmUser findSession(HttpSession session) {
+        return (xmUser) session.getAttribute("user");
+    }
+
+
+
 
 
     @RequestMapping("findCarouse")

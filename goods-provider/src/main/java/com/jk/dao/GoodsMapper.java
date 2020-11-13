@@ -1,9 +1,7 @@
 package com.jk.dao;
 
-import com.jk.entity.Classify;
-import com.jk.entity.Goods;
+import com.jk.entity.*;
 
-import com.jk.entity.MiaoshaGoods;
 import com.jk.pojo.EsGoods;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -22,4 +20,10 @@ public interface GoodsMapper {
     List<Goods> findAie(@Param("mid") String mid,@Param("lab") String lab);
 
     List<EsGoods> findAlls();
+
+    Specs queryGoodsbyIdCart(Integer goodsId);
+
+    Product findProductById(Integer id);
+
+    List<Specs> findSpecsList(Integer id);
 }
