@@ -153,7 +153,7 @@
         </div>
         <div class="nav-right">
             <ul>
-                <li><a href="./login">${user.userName}登录</a><span>|</span></li>
+                <li><a href="./login">登录</a><span>|</span></li>
                 <li><a href="#">注册</a><span>|</span></li>
                 <li><a href="#">消息通知</a></li>
             </ul>
@@ -411,8 +411,8 @@
 
 
 
-    function lie(){
-        var num = 1;
+    function lie(num){
+        num = 1;
         $.ajax({
             type:"post",
             url:"../goods/findLie",
@@ -434,9 +434,9 @@
 
 
 
-    function goodlie(){
-        var mid="1";
-        var lab = "1,2,3,4";
+    function goodlie(mid,lab){
+        mid="1";
+        lab = "0";
         $.ajax({
             dataType:"json",
             type:"POST",
@@ -444,7 +444,7 @@
             data:{mid:mid,lab:lab},
             success:function(result){
                 vm.goodList = result;
-            },error:function(result){
+            },error:function(){
                 alert("系统错误");
             }
         });

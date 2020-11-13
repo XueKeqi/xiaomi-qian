@@ -83,12 +83,16 @@ public class showController {
 
     /*轮播图*/
     @RequestMapping("pictur/findLun")
-    public Map<String, Object> findLun(Integer id){
-        List<Picture> list = goodsService.findLun(id);
-        System.out.print(list);
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("lun", list);
-        return map;
+    public List<Picture> findLun(Integer id){
+
+        List<Picture> goodsLunList = (List)redisUtil.get(RedisContent.GOODS_LUNLIST_KEY+"_"+id );
+        if(goodsLunList == null){
+            goodsLunList = goodsService.findLun(id);
+            redisUtil.set(RedisContent.GOODS_LUNLIST_KEY+"_"+id, goodsLunList);
+            // 设置key的过期时间
+            redisUtil.expire(RedisContent.GOODS_LUNLIST_KEY+"_"+id , 600);
+        }
+        return goodsLunList;
     }
 
 
