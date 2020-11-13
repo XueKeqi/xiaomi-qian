@@ -2,14 +2,6 @@ server:
   port: 8080
 
 spring:
-
-  data:
-    elasticsearch:
-      repositories:
-        enabled: true
-      cluster-name: my-application
-      cluster-nodes: localhost:9300
-
   freemarker:
     check-template-location: true
     template-loader-path: classpath:/templates/

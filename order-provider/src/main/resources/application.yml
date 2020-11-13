@@ -1,0 +1,6 @@
+server:
+  port: 8656
+
+spring:
+  application:
+    name: order
