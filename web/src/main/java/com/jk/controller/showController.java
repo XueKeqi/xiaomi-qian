@@ -66,7 +66,7 @@ public class showController {
             goodsList = goodsService.findAll(mid);
             redisUtil.set(RedisContent.GOODS_LIST_KEY+"_"+mid, goodsList);
             // 设置key的过期时间
-            redisUtil.expire(RedisContent.GOODS_LIST_KEY+"_"+mid , 60);
+            redisUtil.expire(RedisContent.GOODS_LIST_KEY+"_"+mid , 600);
         }
 
         return goodsList;

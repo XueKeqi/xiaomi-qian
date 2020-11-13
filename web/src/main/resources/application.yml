@@ -2,10 +2,6 @@ server:
   port: 8080
 
 spring:
-<<<<<<< HEAD
-=======
-
->>>>>>> 85cf1cbaf08302de3f99bc98d7cbe2eb558210d3
   freemarker:
     check-template-location: true
     template-loader-path: classpath:/templates/
