@@ -244,7 +244,7 @@
                         <ul data-v-6009d2b8="" class="clearfix">
                             <li data-v-6009d2b8=""  th:each="s : ${specsList}">
                                 <input type="hidden" id="${s.id}"/>
-                                <a data-v-6009d2b8="" stat_exposure="true" th:text="${s.productSpecs}" th:onclick="'javascript:alert(\''+${s.id}+'\');'" ></a>
+                                <a data-v-6009d2b8="" stat_exposure="true" th:text="${s.productSpecs}" th:onclick="'javascript:mysub(\''+${s.price}+'\');'" ></a>
                             </li>
                         </ul>
                     </div>
@@ -257,7 +257,7 @@
                         <span data-v-acfb37e4="">商品价格<del data-v-acfb37e4="">原价</del></span>
                     </li>
                 </ul>
-                <div data-v-acfb37e4="" class="total-price">总计：XXXX元</div>
+                <div data-v-acfb37e4="" class="total-price" >总计：<span id="price">3339</span> 元</div>
             </div>
             <div data-v-70283663="" class="btn-box">
                 <div data-v-381dda6a="" data-v-70283663="" class="sale-btn">
@@ -494,7 +494,6 @@
     // }
 
     function addCart(goodsId) {
-        alert(goodsId);
         bootbox.prompt({
             title:"请选择数量",
             inputType:"number",
@@ -521,5 +520,16 @@
             }
         })
     }
+
+
+
+
+    function mysub(id){
+
+
+        $("#price").text(id);
+    }
+
+
 </script>
 </html>

@@ -93,7 +93,7 @@
                 </ul>
             </div>
             <div class="nav-car">
-                <a href="#">
+                <a href="cart">
                     <em class="car"></em>
                     <em>购物车</em>
                 </a>
@@ -109,7 +109,7 @@
                             <a href="./login">登录</a> <span>|</span> <a href="#">注册</a><span>|</span>
                         </div>
                         <div v-else>
-                            <a href="./geren" ><span v-model="user.userName"> <input v-model="user.userName" /></span>  </a><span>|</span>
+                            <a href="./geren" > {{user}}  </a><span>|</span>
                             <a href="javaScript:zhuxiao()">注销</a><span>|</span>
                         </div>
 
@@ -630,11 +630,8 @@
             type:"post",
             dataType:"json",
             success:function (data) {
-                vm.user=(data);
-                alert(vm.user.userName);
-                var str=vm.user.userName;
-                //document.getElementById("name").innerHtml="段落已修改";
-                $("#name").html("内容"+str);
+                vm.user=data.userName;
+
             }
         })
     }

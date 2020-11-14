@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface GoodsMapper {
-    List<Goods> findAll(String[] mid);
+    List<Goods> findAll(@Param("mid") String mid);
 
     List<MiaoshaGoods> findmiaosha(Integer c);
 

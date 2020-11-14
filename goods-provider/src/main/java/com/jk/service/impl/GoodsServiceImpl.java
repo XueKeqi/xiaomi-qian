@@ -21,8 +21,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<Goods> findAll(String mid) {
-        String[] mids=mid.split(",");
-        return goodsMapper.findAll(mids);
+        return goodsMapper.findAll(mid);
     }
 
     @Override
