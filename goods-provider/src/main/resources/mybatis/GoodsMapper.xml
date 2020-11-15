@@ -34,7 +34,7 @@
 
     </select>
     <select id="queryGoodsbyIdCart" parameterType="int" resultType="com.jk.entity.Specs">
-      select * from goods_spu s left join goods_specs p on s.id=p.goodspu_id where p.goodspu_id=#{goodsId}
+      select * from goods_spu s left join goods_specs p on s.id=p.goodspu_id where p.id=#{goodsId}
 	</select>
 
 

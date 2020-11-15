@@ -72,7 +72,9 @@ public class cartController {
         xmUser user2 = goodsService.findUserId(userName);
 
         //去数据库查询商品信息
-        Specs specs1 =goodsService.queryGoodsbyIdCart(specs.getGoodspuId());
+        Integer a  = specs.getGoodspuId();
+
+        Specs specs1 =goodsService.queryGoodsbyIdCart(a);
         String key="cart"+user2.getUserId();
         boolean isExist=goodsService.hasKey(key,goodspuId);
         if(isExist){

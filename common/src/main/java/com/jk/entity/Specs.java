@@ -2,13 +2,14 @@ package com.jk.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * 商品参数
  */
 @Data
-public class Specs {
+public class Specs implements Serializable {
     private Integer id;
     private Integer goodspuId;
     private String productSpecs;
