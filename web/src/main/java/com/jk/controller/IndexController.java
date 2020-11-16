@@ -73,4 +73,14 @@ public class IndexController {
     }
 
 
+    //跳转到OSS页面
+    @RequestMapping("/oss")
+    public String oss(){
+        return "aliyunoss";
+    }
+    //跳转到OSS管理页面
+    @RequestMapping("/oss2")
+    public String oss2(){
+        return "aliyunoss2";
+    }
 }
