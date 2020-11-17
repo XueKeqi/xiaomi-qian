@@ -25,6 +25,13 @@
     <script src="../datatime/bootstrap-datetimepicker.zh-CN.js"></script>
     <script src="../datatable/datatable/DataTables-1.10.18/js/dataTables.bootstrap.min.js"></script>
     <script src="../js/dateFormat.js"></script>
+
+    <script src="../jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script th:src="@{/webjars/jquery/3.5.1/dist/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js}"></script>
+    <script src="../vue.min.js"></script>
+    <script src="../bootstrap-paginator.js"></script>
     
 <meta name="viewport" content="width=1226">
 
@@ -84,12 +91,12 @@
                 <th style="width:100px;"><label>操作</label></th>
             </tr>
 
-            <tr th:each="good: ${goodsList}">
-                <td ><input class="check-one check" type="checkbox" name="goodsId" th:onclick="'javascript:selectProductNum()'" th:value="${good.id}"/> </td>
-                <td class="goods">
-                    <label th:text="${good.title}"></label>
-                </td>
-                <td class="number small-bold-red"><span th:text="${good.price}"></span></td>
+            <tr v-for="site in List">
+                <td ></td>
+                <td class="goods">{{site.title}}</td>
+                <td class="number small-bold-red"><span>{{site.price}}</span></td>
+                <td class="goods">{{site.num}}</td>
+                <td class="number small-bold-red"><span>{{site.priceNum}}</span></td>
                 <td class="operation"><span class="delete btn btn-xs btn-primary" th:onclick="'javascript:delCartProduct(this)'">删除</span></td>
             </tr>
 
@@ -288,10 +295,17 @@
 
     </div>
 </div>
-<!-- <script type="text/javascript" src="js/chunk-vendors.50ac3731.js"></script><script type="text/javascript" src="js/cart.51503133.js"></script> -->
 </div>
 </body>
 <script type="text/javascript">
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            List: "",
+        }
+    })
+
 
 
 
@@ -310,9 +324,10 @@
             url:"../cart/queryCart",
             type:"post",
             dataType:"json",
-            success:function (data) {
+            success:function (result) {
 
-
+                alert(result);
+                vm.List = result;
             }
         })
 

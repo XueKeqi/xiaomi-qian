@@ -104,7 +104,8 @@ public class cartController {
     *
     * */
     @RequestMapping("cart/queryCart")
-    public String queryCart(Model model){
+    @ResponseBody
+    public List<Specs> queryCart(){
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         xmUser user = (xmUser) request.getSession().getAttribute("user");
 
@@ -112,9 +113,6 @@ public class cartController {
         //String key="cart"+"_"+user.getUserId();
         String key="cart"+"_"+1;
         Map<Object, Object> hmget = redisUtil.hmget(key);
-
-
-
         //获取map所有的key
         Set<Object> keys = hmget.keySet();
         List<Specs> list = new ArrayList<Specs>();
@@ -126,9 +124,7 @@ public class cartController {
             list.add(hget);
         }
 
-        model.addAttribute("goodsList",list);
-
-        return "cart";
+        return list;
     }
 
 
