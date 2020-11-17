@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" xml:lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta charset="UTF-8">
@@ -8,24 +7,24 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <script src="./js/jquery-1.11.0.min.js"></script>
+    <script src="../js/jquery-1.11.0.min.js"></script>
    
 
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./datatable/datatable/datatables.min.css">
-    <link rel="stylesheet" href="./fileinput/css/fileinput.min.css">
-    <link rel="stylesheet" href="./datatime/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="./datatable/datatable/DataTables-1.10.18/css/dataTables.bootstrap.min.css">
-    <script src="./js/jquery-3.2.1.min.js"></script>
-    <script src="./bootstrap/js/bootstrap.min.js"></script>
-    <script src="./datatable/datatable/datatables.min.js"></script>
-    <script src="./bootbox/bootbox.min.js"></script>
-    <script src="./datatime/bootstrap-datetimepicker.min.js"></script>
-    <script src="./fileinput/js/fileinput.min.js"></script>
-    <script src="./fileinput/js/locales/zh.js"></script>
-    <script src="./datatime/bootstrap-datetimepicker.zh-CN.js"></script>
-    <script src="./datatable/datatable/DataTables-1.10.18/js/dataTables.bootstrap.min.js"></script>
-    <script src="./js/dateFormat.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../datatable/datatable/datatables.min.css">
+    <link rel="stylesheet" href="../fileinput/css/fileinput.min.css">
+    <link rel="stylesheet" href="../datatime/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../datatable/datatable/DataTables-1.10.18/css/dataTables.bootstrap.min.css">
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../datatable/datatable/datatables.min.js"></script>
+    <script src="../bootbox/bootbox.min.js"></script>
+    <script src="../datatime/bootstrap-datetimepicker.min.js"></script>
+    <script src="../fileinput/js/fileinput.min.js"></script>
+    <script src="../fileinput/js/locales/zh.js"></script>
+    <script src="../datatime/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../datatable/datatable/DataTables-1.10.18/js/dataTables.bootstrap.min.js"></script>
+    <script src="../js/dateFormat.js"></script>
     
 <meta name="viewport" content="width=1226">
 
@@ -84,23 +83,47 @@
                 <th style="width:150px;"><label>小计</label></th>
                 <th style="width:100px;"><label>操作</label></th>
             </tr>
-            </thead>
-            <tbody>
-            <tr th:each="goodslist:${goodsList}">
-                <td ><input class="check-one check" type="checkbox" name="goodsId" th:onclick="'javascript:selectProductNum()'" th:value="${goodslist.id}"/> </td>
+
+            <tr th:each="good: ${goodsList}">
+                <td ><input class="check-one check" type="checkbox" name="goodsId" th:onclick="'javascript:selectProductNum()'" th:value="${good.id}"/> </td>
                 <td class="goods">
-                    <label th:text="${goodslist.title}"></label>
+                    <label th:text="${good.title}"></label>
                 </td>
-                <td class="number small-bold-red"><span th:text="${goodslist.price}"></span></td>
-                <td class="input-group">
-                    <span class="input-group-addon minus" th:onclick="'javascript:delNum(this)'">-</span>
-                    <input type="text" class="number form-control input-sm" th:onkeyup="'javascript:cartValue(this)'"  th:value="${goodslist.num}"  />
-                    <span class="input-group-addon plus" th:onclick="'javascript:addNum(this)'">+</span>
-                </td>
-                <td class="subtotal number small-bold-red"><span th:text="${goodslist.priceNum}"></span></td>
+                <td class="number small-bold-red"><span th:text="${good.price}"></span></td>
                 <td class="operation"><span class="delete btn btn-xs btn-primary" th:onclick="'javascript:delCartProduct(this)'">删除</span></td>
             </tr>
-            </tbody>
+
+            </thead>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </table>
 
         <div>
@@ -269,6 +292,34 @@
 </div>
 </body>
 <script type="text/javascript">
+
+
+
+
+    window.onload = function(){
+        $(function () {
+            findCarAll();
+        });
+    };
+
+
+
+    function findCarAll(){
+
+        $.ajax({
+            url:"../cart/queryCart",
+            type:"post",
+            dataType:"json",
+            success:function (data) {
+
+
+            }
+        })
+
+
+    }
+
+
     function checkall(){
         var checkarr=$("[name='goodsId']");
         $.each(checkarr,function(){
@@ -297,6 +348,13 @@ function delNum(obj) {
         alert("商品数量不能小于0");
     }
 }
+
+
+
+
+
+
+
 
 
 </script>

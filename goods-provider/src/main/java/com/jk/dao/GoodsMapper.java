@@ -21,7 +21,7 @@ public interface GoodsMapper {
 
     List<EsGoods> findAlls();
 
-    Specs queryGoodsbyIdCart(Integer goodsId);
+    Specs queryGoodsbyIdCart(@Param("goodsId") Integer goodsId);
 
     Product findProductById(Integer id);
 
