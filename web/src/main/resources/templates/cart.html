@@ -8,7 +8,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <script src="../js/jquery-1.11.0.min.js"></script>
-   
+
 
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../datatable/datatable/datatables.min.css">
@@ -84,6 +84,10 @@
                 <th style="width:100px;"><label>操作</label></th>
             </tr>
 
+
+            </thead>
+
+            <tbody>
             <tr th:each="good: ${goodsList}">
                 <td ><input class="check-one check" type="checkbox" name="goodsId" th:onclick="'javascript:selectProductNum()'" th:value="${good.id}"/> </td>
                 <td class="goods">
@@ -93,36 +97,7 @@
                 <td class="operation"><span class="delete btn btn-xs btn-primary" th:onclick="'javascript:delCartProduct(this)'">删除</span></td>
             </tr>
 
-            </thead>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            </tbody>
 
         </table>
 
@@ -140,7 +115,7 @@
                 </button>
             </div>
         </div>
-    </div>   
+    </div>
     <div ref="J_siteFooter">
         
         
