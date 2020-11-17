@@ -140,7 +140,7 @@
 </div>
 
 
-<div class="mi-detail" style="height:1700px;">
+<div class="mi-detail" style="height:2000px;">
     <div data-v-70283663="" class="product-box container">
         <div data-v-70283663="" class="img-left">
             <div data-v-7121d496="" data-v-70283663="" class="product-imglist J_imgListBox">
@@ -212,7 +212,7 @@
                 <span th:text="${product.title}"></span>
             </h2>
             <p data-v-70283663="" class="sale-desc" style="text-align:left;">
-                <font color="#ff4a00" th:text="${product.subtitle}"></font>
+                <font color="#ff4a00" th:text="${product.subtitle}">qweqweqwe</font>
                 <font th:text="${product.detail}"></font>
             </p>
             <p data-v-70283663="" class="company-info" style="text-align:left;">小米自营</p>
@@ -237,14 +237,20 @@
                     </div>
                 </div>
             </div>
+
+
+
             <div data-v-6009d2b8="" data-v-70283663="" class="buy-option">
+                <input id="hid" value="1122">
                 <div data-v-6009d2b8="" class="buy-box-child">
                     <div data-v-6009d2b8="" class="option-box">
                         <div data-v-6009d2b8="" class="title">选择商品</div>
                         <ul data-v-6009d2b8="" class="clearfix">
                             <li data-v-6009d2b8=""  th:each="s : ${specsList}">
-                                <input type="hidden" id="${s.id}"/>
-                                <a data-v-6009d2b8="" stat_exposure="true" th:text="${s.productSpecs}" th:onclick="'javascript:mysub(\''+${s.price}+'\');'" ></a>
+<!--
+                                <input type="text" th:onclick="'javascript:mysub(\''+${s.price}+'\',\''+${s.id}+'\');'"/>
+-->
+                                <a data-v-6009d2b8="" stat_exposure="true" th:text="${s.productSpecs}" th:onclick="'javascript:mysub(\''+${s.price}+'\',\''+${s.id}+'\');'"></a>
                             </li>
                         </ul>
                     </div>
@@ -472,7 +478,6 @@
             dataType:"json",
             success:function (data) {
                 vm.user=(data);
-                alert(vm.user.userName);
                 var str=vm.user.userName;
                 //document.getElementById("name").innerHtml="段落已修改";
                 $("#name").html("内容"+str);
@@ -481,7 +486,8 @@
     }
 
     function addCart(goodsId) {
-        alert(goodsId);
+        var id = $("#hid").val();
+
         bootbox.prompt({
             title:"请选择数量",
             inputType:"number",
@@ -494,10 +500,12 @@
                             url:"../cart/addCart",
                             type:"post",
                             data:{
-                                goodspuId:goodsId,
+                                goodspuId:id,
                                 nums:result
                             },
                             success:function(){
+
+                                window.location.href="http://localhost:8080/cart";
 
                             }
                         })
@@ -512,10 +520,10 @@
 
 
 
-    function mysub(id){
+    function mysub(price,id){
 
-
-        $("#price").text(id);
+        $("#price").text(price);
+        $("#hid").val(id);
     }
 
 

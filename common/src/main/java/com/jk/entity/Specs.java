@@ -9,7 +9,7 @@ import java.util.Map;
  * 商品参数
  */
 @Data
-public class Specs implements Serializable {
+public class Specs{
     private Integer id;
     private Integer goodspuId;
     private String productSpecs;
@@ -22,4 +22,6 @@ public class Specs implements Serializable {
     private Integer priceNum;
     //数量
     private Integer num;
+    //照片
+    private String images;
 }

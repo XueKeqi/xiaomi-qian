@@ -34,7 +34,7 @@
 
     </select>
     <select id="queryGoodsbyIdCart" parameterType="int" resultType="com.jk.entity.Specs">
-      select * from goods_spu s left join goods_specs p on s.id=p.goodspu_id where p.id=#{goodsId}
+        select p.*,s.title,s.images from goods_spu s left join goods_specs p on s.id=p.goodspu_id where p.id in (#{goodsId})
 	</select>
 
 
@@ -43,7 +43,7 @@
     </select>
 
     <select id="findSpecsList" resultType="Specs" parameterType="Integer">
-        SELECT a.* FROM goods_specs a,goods_spu b where a.goodspu_id=b.id and b.id=#{id};
+        SELECT a.* FROM goods_specs a,goods_spu b where a.goodspu_id=b.id and b.id=#{id}
     </select>
 
 
