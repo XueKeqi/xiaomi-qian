@@ -104,29 +104,27 @@ public class cartController {
     *
     * */
     @RequestMapping("cart/queryCart")
-    public String queryCart(Model model){
+    @ResponseBody
+    public List<Specs> queryCart(){
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         xmUser user = (xmUser) request.getSession().getAttribute("user");
-
 
         //key
         //String key="cart"+"_"+user.getUserId();
         String key="cart"+"_"+1;
         Map<Object, Object> hmget = redisUtil.hmget(key);
-
         //获取map所有的key
         Set<Object> keys = hmget.keySet();
-
-        Specs specs =goodsService.queryGoodsbyIdCart(63);
-
         List<Specs> list = new ArrayList<Specs>();
-        list.add(specs);
 
-       // ModelAndView mav = new ModelAndView("cart");
-        //mav.addObject("goodsList",list);
-        model.addAttribute("goodsList",list);
+        for (Object str : keys) {
+            String sta = str.toString();
+            Specs hget = (Specs)redisUtil.hget(key, sta);
+            //获取前台购买的数量
+            list.add(hget);
+        }
 
-        return "redirect:/cart";
+        return list;
     }
 
 
