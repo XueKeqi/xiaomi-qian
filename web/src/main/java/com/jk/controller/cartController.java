@@ -126,7 +126,7 @@ public class cartController {
         //mav.addObject("goodsList",list);
         model.addAttribute("goodsList",list);
 
-        return "cart";
+        return "redirect:/cart";
     }
 
 
