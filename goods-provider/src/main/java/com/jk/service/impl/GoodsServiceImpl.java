@@ -3,7 +3,6 @@ package com.jk.service.impl;
 import com.jk.dao.CarouseMapper;
 import com.jk.dao.GoodsMapper;
 import com.jk.entity.*;
-import com.jk.pojo.EsGoods;
 import com.jk.service.GoodsService;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +20,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<Goods> findAll(String mid) {
-        String[] mids=mid.split(",");
-        return goodsMapper.findAll(mids);
+        return goodsMapper.findAll(mid);
     }
 
     @Override
@@ -49,5 +47,22 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.findAie(mid,lab);
     }
 
+    @Override
+
+    public Specs queryGoodsbyIdCart(Integer goodsId) {
+        return goodsMapper.queryGoodsbyIdCart(goodsId);
+    }
+
+
+    @Override
+
+    public Product findProductById(Integer id) {
+        return goodsMapper.findProductById(id);
+    }
+
+    @Override
+    public List<Specs> findSpecsList(Integer id) {
+        return goodsMapper.findSpecsList(id);
+    }
 
 }

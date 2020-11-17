@@ -1,14 +1,22 @@
 package com.jk.controller;
 
+import com.jk.entity.Product;
+import com.jk.entity.Specs;
 import com.jk.entity.xmUser;
+import com.jk.service.GoodsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class IndexController {
+
+    @Resource
+    private GoodsService goodsService;
 
     @RequestMapping("/index")
     public String index(){
@@ -25,9 +33,9 @@ public class IndexController {
         return "miaosha";
     }
 
-    @RequestMapping("/mycar")
+    @RequestMapping("/cart")
     public String mycart(){
-        return "mycar"; }
+        return "cart"; }
 
     @RequestMapping("/login")
     public String login(){
@@ -45,5 +53,24 @@ public class IndexController {
         model.addAttribute("userOrder",user);
         return "userOrder";
     }
+    /**
+     * 商品详情
+     * @param id
+     * @param
+     * @return
+     */
+
+    @RequestMapping("product/detail")
+    public String detail(Integer id,Model m){
+        //产品系列信息：比如 小米 10、Redmi P30
+        Product product=goodsService.findProductById(id);
+        //产品系列下的具体商品列表：比如 '小米 10 XX版本 XX颜色'
+        List<Specs> specsList=goodsService.findSpecsList(id);
+        m.addAttribute("id",id);
+        m.addAttribute("product",product);
+        m.addAttribute("specsList",specsList);
+        return "detail";
+    }
+
 
 }

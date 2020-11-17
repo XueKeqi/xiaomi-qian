@@ -35,7 +35,6 @@
             margin-left: 245px;
         }
 
-
         #aaa > li {
 
             text-align: right;
@@ -66,23 +65,6 @@
         }
 
 
-/*
-        .banner_menu_content_ul li{
-            background-color: #2196F3;
-            height: 76px;
-            width:202px;
-            padding: 18px 20px;
-            display:inline-block;
-            position: relative;
-
-
-        }
-*/
-
-
-
-
-
     </style>
 
 </head>
@@ -111,7 +93,7 @@
                 </ul>
             </div>
             <div class="nav-car">
-                <a href="#">
+                <a href="cart">
                     <em class="car"></em>
                     <em>购物车</em>
                 </a>
@@ -121,37 +103,29 @@
             </div>
             <div class="nav-right">
                 <ul>
-                    <li><a href="./login">登录</a><span>|</span></li>
-                    <li><a href="#">注册</a><span>|</span></li>
+                    <li>
+
+                        <div v-if="user === '' ">
+                            <a href="./login">登录</a> <span>|</span> <a href="#">注册</a><span>|</span>
+                        </div>
+                        <div v-else>
+                            <a href="./geren" > {{user}}  </a><span>|</span>
+                            <a href="javaScript:zhuxiao()">注销</a><span>|</span>
+                        </div>
+
+                    </li>
+
                     <li><a href="#">消息通知</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
     <div class="content">
-
-
-
-
-
-
-
-
 
 <div id="asd">
 
-
         <div class="content-head clearfix">
-
 
             <div class="logo-box">
                 <a href="index.html">
@@ -161,7 +135,6 @@
                     </div>
                 </a>
             </div>
-
 
             <div id="ggg" style="float: left;margin-left: 15px">
                 <a href="index.html">
@@ -173,15 +146,13 @@
 
             </div>
 
-
-
             <div class="guid">
                 <ul>
-                    <li><a href="#">小米手机</a></li>
+                    <li><a href="miList">小米手机</a></li>
                     <li class="asda"><a href="#">Redmi红米</a></li>
                     <li class="asda"><a href="#">电视</a></li>
                     <li class="asda"><a href="#">笔记本</a></li>
-                    <li class="asda"><a href="#">家电</a></li>
+                    <li class="asda"><a href="miList">家电</a></li>
                     <li class="asda"><a href="#">路由器</a></li>
                     <li class="asda"><a href="#">智能硬件</a></li>
                     <li class="asda"><a href="#">服务</a></li>
@@ -195,11 +166,6 @@
             </div>
         </div>
 
-    <!--当 z-index =  1  时 出现  -->
-   <!-- <div id="div2">
-
-    </div>-->
-
     <div id="div2">
         <ul id="aaa">
 
@@ -207,19 +173,10 @@
 
     </div>
 
-
-
 </div>
-
-
-
-
-
-
 
         <div class="content-list">
             <div class="bg-picture">
-
 
                 <div id="banner" style="">
                     <div class="img-wrap">
@@ -260,8 +217,6 @@
             <div id="zxc" class="arror-right right"><img src="./images/icon-slides.png" alt=""></div>
 
         </div>
-
-
 
         <div class="list-new clearfix">
             <div class="farst-content">
@@ -396,19 +351,9 @@
                     </a>
                 </div>
 
-
-
                 <div class="shop-content-right">
                     <ul id="ul_list">
-                        <!--<li><a href="#">
-                                <div class="shop-content-li">
-                                    <img src="./picture/小米10 至尊版.webp" alt="">
-                                    <h3 class="ellipse">小米10 至尊版</h3>
-                                    <p class="ellipse">120X 变焦/120W秒充/120Hz屏幕</p>
-                                    <p class="price"><span>5299元起</span></p>
-                                </div>
-                            </a>
-                        </li>-->
+
                     </ul>
                 </div>
             </div>
@@ -428,8 +373,6 @@
                     </ul>
                 </div>
             </div>
-
-
 
             <div class="main-shop-list-left">
                 <ul class="clearfix">
@@ -454,10 +397,6 @@
                     <img src="./picture/59e8fc8ba9718c266882719fb4bbcedd.webp" alt="">
                 </a>
             </a></div>
-
-
-
-
 
         <div class="video-content">
             <div class="miaosha-title">
@@ -655,7 +594,7 @@
     var vm = new Vue({
         el: '#app',
         data: {
-            userList: "",
+            user: "",
         }
     })
 
@@ -670,7 +609,7 @@
 
     window.onload = function(){
         $(function () {
-
+            findSession();
             yy();
             findList();
             findLista("3,21");
@@ -682,7 +621,20 @@
                          //这里是鼠标退出banner区域，再进行轮播
         });
     };
+    /*
+* 判断用户是否登录
+* */
+    function findSession(){
+        $.ajax({
+            url:"./user/findSession",
+            type:"post",
+            dataType:"json",
+            success:function (data) {
+                vm.user=data.userName;
 
+            }
+        })
+    }
     /*轮播图*/
     function lun(){
         var index = 0;
@@ -775,8 +727,6 @@
             url:"../goods/findAll",
             data:{mid:mid},
             success:function(data){
-                //var arr=data.replies;
-
                 var str = "";
                 var a = 0;
                 var aa = "";
@@ -867,13 +817,11 @@
             url:"../pictur/findLun",
             data:{id:id},
             success:function(data){
-
-                var arr=data.lun;
                 var str = "";
                 var a = 0;
-                for(var i=0;i<arr.length;i++){
+                for(var i=0;i<data.length;i++){
                     a++;
-                    var url=arr[i].url;
+                    var url=data[i].url;
                     //alert(url)
                     if(a<=1){
                         str+='<li class="item" style="display: block;"><img src="'+url+'"/></li>';
@@ -897,13 +845,11 @@
             url:"../pictur/findLun",
             data:{id:id},
             success:function(data){
-                var arr=data.lun;
-
                 var str = "";
                 var a = 0;
-                for(var i=0;i<arr.length;i++){
+                for(var i=0;i<data.length;i++){
                     a++;
-                    var url=arr[i].url;
+                    var url=data[i].url;
                     str+='<img src="'+url+'"/>';
 
                     $("#sss").html(str);
@@ -950,11 +896,9 @@ function flefta(mid){
 
                 var title=data[i].title;
                 var images = data[i].images;
-
-
-                str+='<li><a href="#"><img class="aaimg" src="'+images+'" ><div id="qwea">'+title+'</div></a></li>';
-
-
+                str+='<li><a href="../product/detail?id='+data[i].id+'">';
+                str+='<img class="aaimg" src="'+images+'" >';
+                str+='<div id="qwea">'+title+'</div></a></li>';
                 $("#aaa").html(str);
 
             }

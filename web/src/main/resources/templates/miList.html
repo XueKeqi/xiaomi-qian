@@ -436,7 +436,7 @@
 
     function goodlie(){
         var mid="1";
-        var lab = "1,2,3,4";
+        var lab = "0";
         $.ajax({
             dataType:"json",
             type:"POST",
@@ -444,7 +444,7 @@
             data:{mid:mid,lab:lab},
             success:function(result){
                 vm.goodList = result;
-            },error:function(result){
+            },error:function(){
                 alert("系统错误");
             }
         });

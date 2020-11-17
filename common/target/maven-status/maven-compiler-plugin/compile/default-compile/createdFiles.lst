@@ -1,0 +1,12 @@
+com\jk\entity\xmUser.class
+com\jk\utils\CheckSumBuilder.class
+com\jk\pojo\EsGoods.class
+com\jk\entity\Carouse.class
+com\jk\entity\MiaoshaOrder.class
+com\jk\entity\Classify.class
+com\jk\entity\Goods.class
+com\jk\utils\HttpClientUtil.class
+com\jk\entity\OrderInfo.class
+com\jk\entity\MiaoshaGoods.class
+com\jk\entity\MiaoshaUser.class
+com\jk\entity\Picture.class

@@ -15,4 +15,10 @@ public interface GoodsService {
     List<Classify> findLie(Integer num);
 
     List<Goods> findAie(String mid, String lab);
+
+    Specs queryGoodsbyIdCart(Integer goodsId);
+
+    Product findProductById(Integer id);
+
+    List<Specs> findSpecsList(Integer id);
 }

@@ -42,4 +42,18 @@ public class goodsController {
     }
 
 
+    @RequestMapping("goods/queryGoodsbyIdCart")
+    public Specs queryGoodsbyIdCart(@RequestParam("goodsId") Integer goodsId){
+        Specs specs = goodsService.queryGoodsbyIdCart(goodsId);
+        return specs;
+    }
+    @RequestMapping("goods/findProductById")
+    Product findProductById(@RequestParam Integer id){
+        return goodsService.findProductById(id);
+    };
+    @RequestMapping("goods/findSpecsList")
+    List<Specs> findSpecsList(@RequestParam Integer id){
+        return goodsService.findSpecsList(id);
+    };
+
 }
