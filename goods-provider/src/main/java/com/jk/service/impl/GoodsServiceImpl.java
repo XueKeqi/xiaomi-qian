@@ -65,4 +65,9 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.findSpecsList(id);
     }
 
+    @Override
+    public List<Specs> findCart(String chkvalue) {
+        return goodsMapper.findCart(chkvalue);
+    }
+
 }

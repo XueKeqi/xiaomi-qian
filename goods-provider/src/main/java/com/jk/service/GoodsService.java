@@ -21,4 +21,6 @@ public interface GoodsService {
     Product findProductById(Integer id);
 
     List<Specs> findSpecsList(Integer id);
+
+    List<Specs> findCart(String chkvalue);
 }

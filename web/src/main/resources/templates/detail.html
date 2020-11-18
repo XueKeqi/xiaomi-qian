@@ -267,7 +267,7 @@
             </div>
             <div data-v-70283663="" class="btn-box">
                 <div data-v-381dda6a="" data-v-70283663="" class="sale-btn">
-                    <a data-v-381dda6a="" class="btn btn-line-primary" th:onclick="'javascript:addCart(\''+${product.id}+'\');'">加入购物车</a>
+                    <a data-v-381dda6a="" class="btn btn-line-primary" th:onclick="'javascript:addCart();'">加入购物车</a>
                 </div>
                 <div data-v-5d5a0502="" data-v-70283663="" class="favorite-btn">
                     <a data-v-5d5a0502="" class="btn-gray btn-like">
@@ -485,9 +485,10 @@
         })
     }
 
-    function addCart(goodsId) {
+    function addCart() {
         var id = $("#hid").val();
-
+        var price = $("#price").text();
+        alert(id+"   "+price);
         bootbox.prompt({
             title:"请选择数量",
             inputType:"number",
@@ -501,6 +502,7 @@
                             type:"post",
                             data:{
                                 goodspuId:id,
+                                price:price,
                                 nums:result
                             },
                             success:function(){

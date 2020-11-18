@@ -26,4 +26,6 @@ public interface GoodsMapper {
     Product findProductById(Integer id);
 
     List<Specs> findSpecsList(Integer id);
+
+    List<Specs> findCart(@Param("chkvalue") String chkvalue);
 }

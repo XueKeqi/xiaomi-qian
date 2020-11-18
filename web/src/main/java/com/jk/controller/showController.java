@@ -84,6 +84,7 @@ public class showController {
     @RequestMapping("pictur/findLun")
     public List<Picture> findLun(Integer id){
 
+       // List<Picture> goodsLunList  = goodsService.findLun(id);
         List<Picture> goodsLunList = (List)redisUtil.get(RedisContent.GOODS_LUNLIST_KEY+"_"+id );
         if(goodsLunList == null){
             goodsLunList = goodsService.findLun(id);

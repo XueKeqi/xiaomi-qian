@@ -43,16 +43,18 @@ public class cartController {
      */
     @RequestMapping("cart/addCart")
     @ResponseBody
-    public void  addCart(String goodspuId, Integer nums, HttpSession session){
+    public void  addCart(String goodspuId, Integer nums, HttpSession session,Integer price){
         Specs specs = new Specs();
         specs.setGoodspuId(Integer.parseInt(goodspuId));
         specs.setNum(nums);
+        specs.setPrice(price);
 
         //从session中获取当前用户
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         xmUser user= (xmUser) request.getSession().getAttribute("user");
         String userName=user.getUserName();
         xmUser user2 = goodsService.findUserId(userName);
+        //xmUser user2 = goodsService.findUserId("xkq");
 
         //去数据库查询商品信息
         Integer a  = specs.getGoodspuId();
@@ -74,7 +76,7 @@ public class cartController {
                 //获取前台购买的数量
                 specs1.setNum(specs.getNum());
                 //给商品小计赋值
-                specs1.setPriceNum(specs.getNum()*specs1.getPrice());
+                specs1.setPriceNum(specs.getNum()*specs.getPrice());
 
                 redisUtil.hset(key,goodspuId,specs1);
 
@@ -92,7 +94,7 @@ public class cartController {
             //获取前台购买的数量
             specs1.setNum(specs.getNum());
             //给商品小计赋值
-            specs1.setPriceNum(specs.getNum()*specs1.getPrice());
+            specs1.setPriceNum(specs.getNum()*specs.getPrice());
             //存入redis
             redisUtil.hset(key,goodspuId,specs1);
 
@@ -110,9 +112,12 @@ public class cartController {
         xmUser user = (xmUser) request.getSession().getAttribute("user");
 
         //key
-        //String key="cart"+"_"+user.getUserId();
-        String key="cart"+"_"+1;
+        String key="cart"+"_"+user.getUserId();
+        //String key="cart"+"_"+1;
         Map<Object, Object> hmget = redisUtil.hmget(key);
+
+
+
         //获取map所有的key
         Set<Object> keys = hmget.keySet();
         List<Specs> list = new ArrayList<Specs>();
@@ -120,12 +125,34 @@ public class cartController {
         for (Object str : keys) {
             String sta = str.toString();
             Specs hget = (Specs)redisUtil.hget(key, sta);
+            Specs s = goodsService.queryGoodsbyIdCart(hget.getId());
+            hget.setPrice(s.getPrice());
+            hget.setPriceNum(hget.getNum()*hget.getPrice());
             //获取前台购买的数量
             list.add(hget);
         }
 
         return list;
     }
+
+
+
+    @RequestMapping("cart/findCart")
+    @ResponseBody
+    public String findCart(String chkvalue){
+
+        List<Specs> list = goodsService.findCart(chkvalue);
+
+        for(int i=0; i<list.size(); i++){
+            int stock = list.get(i).getStock();
+            if(stock == 0){
+                System.out.print(list.get(i).getTitle()+"缺货");
+                return list.get(i).getTitle()+"缺货";
+            }
+        }
+        return "success";
+    }
+
 
 
 

@@ -51,6 +51,10 @@ public class goodsController {
     Product findProductById(@RequestParam Integer id){
         return goodsService.findProductById(id);
     };
+    @RequestMapping("goods/findCart")
+    List<Specs> findCart(@RequestParam String chkvalue){ return  goodsService.findCart(chkvalue); }
+
+
     @RequestMapping("goods/findSpecsList")
     List<Specs> findSpecsList(@RequestParam Integer id){
         return goodsService.findSpecsList(id);

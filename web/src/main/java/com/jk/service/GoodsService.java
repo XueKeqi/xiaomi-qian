@@ -61,4 +61,7 @@ public interface GoodsService {
     @RequestMapping("goods/findSpecsList")
     List<Specs> findSpecsList(@RequestParam Integer id);
 
+
+    @RequestMapping("goods/findCart")
+    List<Specs> findCart(@RequestParam String chkvalue);
 }

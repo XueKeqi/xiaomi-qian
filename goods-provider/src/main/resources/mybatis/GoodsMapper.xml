@@ -37,6 +37,10 @@
         select p.*,s.title,s.images from goods_spu s left join goods_specs p on s.id=p.goodspu_id where p.id in (#{goodsId})
 	</select>
 
+    <select id="findCart" parameterType="String" resultType="com.jk.entity.Specs">
+        select p.*,s.title,s.images from goods_spu s left join goods_specs p on s.id=p.goodspu_id where p.id in (${chkvalue})
+    </select>
+
 
     <select id="findProductById" resultType="Product" parameterType="Integer">
         select * from goods_spu where id=#{id}
